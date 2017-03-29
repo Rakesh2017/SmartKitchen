@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "971738607945",
+    "firebase_url": "https://smart-kitchen-29de5.firebaseio.com",
+    "project_id": "smart-kitchen-29de5",
+    "storage_bucket": "smart-kitchen-29de5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971738607945:android:13c661830686448d",
+        "android_client_info": {
+          "package_name": "com.example.dell.smartkitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971738607945-n99lggllbrdn3sppuk96gmipspjlmqnc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dell.smartkitchen",
+            "certificate_hash": "982307d390a77ff15b3c52587aa8b4af5a58eb03"
+          }
+        },
+        {
+          "client_id": "971738607945-43rofkathdj430qeopvmnuphevui5it9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQPIr21ElrX_wkEbR8JZ7CcncwgSi4bsA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971738607945-43rofkathdj430qeopvmnuphevui5it9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
