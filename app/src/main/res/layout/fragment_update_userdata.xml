@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.smartkitchen.UpdateUserdata">
+
+    <!-- TODO: Update blank fragment layout -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f25b5b"
+    >
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageview"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:visibility="visible"
+        android:src="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/uploadbutton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="UPLOAD IMAGE"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@color/bg_main"
+        />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:hint="Name"
+        android:gravity="center"
+        android:background="@color/bg_login"
+        android:id="@+id/username"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:hint="Contact"
+        android:gravity="center"
+        android:background="@color/bg_login"
+        android:phoneNumber="true"
+        android:id="@+id/usercontact"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Submit"
+        android:background="@color/bg_main"
+        android:id="@+id/submitbtn"/>
+
+</LinearLayout>
+
+</FrameLayout>

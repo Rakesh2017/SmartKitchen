@@ -1,8 +1,12 @@
 package com.example.dell.smartkitchen;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +32,8 @@ public class HomePage extends AppCompatActivity
     ImageView circle4;
     Animation circlesanimation;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,15 @@ public class HomePage extends AppCompatActivity
         circle2.startAnimation(circlesanimation);
         circle3.startAnimation(circlesanimation);
         circle4.startAnimation(circlesanimation);
+
+        //fragment
+        android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        Fragment fragment=new Fragment();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+
+
 
 
 
@@ -87,17 +102,21 @@ public class HomePage extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_profile) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new UserProfile()).addToBackStack(null).commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_calenadar) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_messages) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_manual) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
+
+        } else if (id == R.id.nav_contact) {
+
+        }
+          else if (id == R.id.nav_about) {
 
         }
 
