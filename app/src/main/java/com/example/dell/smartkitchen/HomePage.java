@@ -12,19 +12,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView message;
+    //animation on circles
+
+    ImageView circle1;
+    ImageView circle2;
+    ImageView circle3;
+    ImageView circle4;
+    Animation circlesanimation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        message=(TextView)findViewById(R.id.message1);
-        message.setSelected(true);
+        circle1=(ImageView)findViewById(R.id.circle1);
+        circle2=(ImageView)findViewById(R.id.circle2);
+        circle3=(ImageView)findViewById(R.id.circle3);
+        circle4=(ImageView)findViewById(R.id.circle4);
+        circlesanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecircles);
+        circle1.startAnimation(circlesanimation);
+        circle2.startAnimation(circlesanimation);
+        circle3.startAnimation(circlesanimation);
+        circle4.startAnimation(circlesanimation);
+
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
