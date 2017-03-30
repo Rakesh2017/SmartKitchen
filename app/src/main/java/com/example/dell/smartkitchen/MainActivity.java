@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
         String emailname=sharedPreferences.getString("A","");
         inputEmail.setText(emailname);
 
+        String passwordname=sharedPreferences.getString("B","");
+        inputPassword.setText(passwordname);
+
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                                 } else {
                                     //email is stored in Shared Preferences
                                     editor.putString("A",inputEmail.getText().toString()).commit();
+                                    editor.putString("B",inputPassword.getText().toString()).commit();
                                     Intent intent = new Intent(getApplicationContext(), HomePage.class);
                                     startActivity(intent);
                                     Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();

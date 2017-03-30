@@ -6,13 +6,166 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.dell.smartkitchen.HomePage"
-    >
+    tools:showIn="@layout/app_bar_home_page">
+
+
+
+
+
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/homepagebackground"
-        android:id="@+id/imbackground"/>
+        android:layout_height="130dp"
+        android:background="@color/bg_main"/>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       android:layout_marginTop="133dp"
+       android:orientation="horizontal"
+       android:layout_marginLeft="3dp"
+       android:layout_marginRight="3dp"
+       android:weightSum="2"
+       >
+       <ImageView
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:background="@drawable/realtimebackhomepage"
+           android:layout_weight="1"/>
+       <ImageView
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="1"
+           android:layout_marginLeft="3dp"
+           android:background="@drawable/wholedatabackground"/>
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:weightSum="2"
+        android:layout_marginTop="263dp"
+        >
 
 
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#0c5361"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="3dp"
+            android:background="@color/btn_logut_bg"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="336dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:weightSum="2"
+        >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/analyticsbackgroundhome"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="3dp"
+            android:background="@drawable/manualbackhome"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:weightSum="2"
+        android:layout_marginTop="466dp"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="3dp"
+            android:background="#b67b2d"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="543dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        >
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Real-Time \n  Analysis"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginTop="265dp"
+        android:textSize="20dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Whole-Time \n  Data"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginTop="265dp"
+        android:layout_marginLeft="195dp"
+        android:textSize="20dp"
+        android:layout_weight="1" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Analytics \n  Graphs"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginTop="470dp"
+        android:textSize="20dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  About\n  IOT"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginTop="470dp"
+        android:layout_marginLeft="195dp"
+        android:textSize="20dp"
+        android:layout_weight="1" />
 
 </RelativeLayout>
