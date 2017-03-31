@@ -55,8 +55,6 @@ public class Messages extends Fragment {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.child("messages").child("A").getValue(String.class);
-
-
                 list.add(name);
                 adapter.notifyDataSetChanged();
             }
