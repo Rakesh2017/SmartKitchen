@@ -38,6 +38,7 @@
         android:layout_marginTop="60dp"
         android:layout_gravity="center"
         android:hint="Name"
+        android:singleLine="true"
         android:gravity="center"
         android:background="@color/bg_login"
         android:id="@+id/username"/>
@@ -60,7 +61,8 @@
         android:layout_marginTop="40dp"
         android:text="Submit"
         android:background="@color/bg_main"
-        android:id="@+id/submitbtn"/>
+        android:id="@+id/submitbtn"
+        android:textStyle="bold"/>
 
 </LinearLayout>
 

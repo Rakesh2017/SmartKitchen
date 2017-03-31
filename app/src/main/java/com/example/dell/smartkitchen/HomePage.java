@@ -21,6 +21,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,8 +36,16 @@ public class HomePage extends AppCompatActivity
     ImageView circle2;
     ImageView circle3;
     ImageView circle4;
-    Animation circlesanimation;
+    ImageView img1;
+    ImageView img2;
+    ImageView img3;
+    ImageView img4;
 
+    Animation circlesanimation;
+    TextView userprofilenamehomepage;
+    Animation slidedownanimation;
+    DatabaseReference dparent  = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference refname = dparent.child("username");
 
 
     @Override
@@ -43,11 +57,24 @@ public class HomePage extends AppCompatActivity
         circle2=(ImageView)findViewById(R.id.circle2);
         circle3=(ImageView)findViewById(R.id.circle3);
         circle4=(ImageView)findViewById(R.id.circle4);
+        img1=(ImageView)findViewById(R.id.img1);
+        img2=(ImageView)findViewById(R.id.img2);
+        img3=(ImageView)findViewById(R.id.img3);
+        img4=(ImageView)findViewById(R.id.img4);
+
         circlesanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecircles);
+        slidedownanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slidedown);
         circle1.startAnimation(circlesanimation);
         circle2.startAnimation(circlesanimation);
         circle3.startAnimation(circlesanimation);
         circle4.startAnimation(circlesanimation);
+        img1.startAnimation(slidedownanimation);
+        img2.startAnimation(slidedownanimation);
+        img3.startAnimation(slidedownanimation);
+        img4.startAnimation(slidedownanimation);
+
+        userprofilenamehomepage=(TextView)findViewById(R.id.userprofilenamehomepage);
+
 
         //fragment
         android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
@@ -62,6 +89,24 @@ public class HomePage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    protected void onStart(){
+        super.onStart();
+
+                  refname.addValueEventListener(new ValueEventListener() {
+                      @Override
+                      public void onDataChange(DataSnapshot dataSnapshot) {
+                          String name = dataSnapshot.getValue(String.class);
+                          userprofilenamehomepage.setText("Hi "+name);
+                      }
+
+                      @Override
+                      public void onCancelled(DatabaseError databaseError) {
+
+                      }
+                  });
+
     }
 
     @Override
@@ -108,6 +153,8 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.nav_calenadar) {
 
         } else if (id == R.id.nav_messages) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Messages()).addToBackStack(null).commit();
+
 
         } else if (id == R.id.nav_manual) {
 

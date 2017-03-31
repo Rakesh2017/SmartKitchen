@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dip"
                         android:background="@null"
-                        android:text="Not a member? Please get yourself registered!"
+                        android:text="Not a member? \nPlease get yourself registered!"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="15dp" />
