@@ -2,18 +2,24 @@ package com.example.dell.smartkitchen;
 
 
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import com.firebase.client.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -21,17 +27,21 @@ import java.util.ArrayList;
  */
 public class Messages extends Fragment {
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
-
     DatabaseReference dref=dparent.child("messages");
 
 
     ListView listview;
     ArrayList<String> list=new ArrayList<>();
+
     ArrayAdapter<String> adapter;
 
+
+
+
     public Messages() {
-        // Required empty public constructor
+
     }
+
 
 
     @Override
@@ -39,10 +49,12 @@ public class Messages extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
+
         listview=(ListView)view.findViewById(R.id.listview);
         adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,list);
         listview.setAdapter(adapter);
-        dref= FirebaseDatabase.getInstance().getReference();
+
+
 
 
 
@@ -51,12 +63,22 @@ public class Messages extends Fragment {
 
     public void onStart() {
         super.onStart();
+
+
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("messages").child("A").getValue(String.class);
-                list.add(name);
-                adapter.notifyDataSetChanged();
+                for(com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                {
+                    String name = dataSnapshot1.getValue(String.class);
+                    list.add(name);
+                    adapter.notifyDataSetChanged();
+                }
+
+
+               // String name = dataSnapshot.child("messages").child("A").getValue(String.class);
+                //list.add(name);
+                //adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -64,5 +86,6 @@ public class Messages extends Fragment {
             }
         });
     }
+
 
 }

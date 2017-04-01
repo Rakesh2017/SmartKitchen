@@ -151,6 +151,8 @@ public class HomePage extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new UserProfile()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_calenadar) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CalendarData()).addToBackStack(null).commit();
+
 
         } else if (id == R.id.nav_messages) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Messages()).addToBackStack(null).commit();
