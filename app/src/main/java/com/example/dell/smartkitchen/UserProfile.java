@@ -26,10 +26,12 @@ public class UserProfile extends Fragment {
 
     TextView profilename;
     TextView profilecontact;
+    TextView profilemail;
 
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
     DatabaseReference refname = dparent.child("username");
     DatabaseReference refcontact = dparent.child("usercontact");
+    DatabaseReference refmail = dparent.child("usermail");
 
 
 
@@ -46,6 +48,7 @@ public class UserProfile extends Fragment {
         button=(Button)view.findViewById(R.id.updatebtn);
         profilename=(TextView)view.findViewById(R.id.profilename);
         profilecontact=(TextView)view.findViewById(R.id.profilecontact);
+        profilemail=(TextView)view.findViewById(R.id.profilemail);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,19 @@ public class UserProfile extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String contact = dataSnapshot.getValue(String.class);
                 profilecontact.setText(contact);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        refmail.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String contact = dataSnapshot.getValue(String.class);
+                profilemail.setText(contact);
             }
 
             @Override
