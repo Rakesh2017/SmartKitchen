@@ -9,11 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -50,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    Animation animation;
+    ImageButton imageButton1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         imageButton=(ImageButton)findViewById(R.id.rot);
+        imageButton1=(ImageButton)findViewById(R.id.rot1);
+
+        animation=AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
+        imageButton1.startAnimation(animation);
 
         sharedPreferences=getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();

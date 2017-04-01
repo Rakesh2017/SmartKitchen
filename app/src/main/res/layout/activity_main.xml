@@ -139,13 +139,13 @@
 
 
 
-                    <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
+                    <ImageButton
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="30dp"
+                        android:background="@drawable/ourlogo1"
                         android:layout_marginTop="20dp"
-                        android:background="@drawable/loginsignupbackground"
                         />
 
                     <android.support.design.widget.TextInputLayout
@@ -240,10 +240,9 @@
 
     <ImageButton
         android:layout_width="150dp"
-        android:layout_height="102dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="102dp"
         android:background="@drawable/ourlogo2"
         android:layout_marginTop="70dp"
         android:id="@+id/rot1"/>
