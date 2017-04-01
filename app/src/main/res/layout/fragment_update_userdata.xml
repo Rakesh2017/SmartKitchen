@@ -2,14 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/homebackground"
     tools:context="com.example.dell.smartkitchen.UpdateUserdata">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ce2d40">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update profile"
+            android:textColor="#000000"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
 
     <!-- TODO: Update blank fragment layout -->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f25b5b"
+    android:layout_marginTop="70dp"
     >
 
     <ImageView
@@ -18,52 +38,100 @@
         android:id="@+id/imageview"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="#FFFFFF"
         android:visibility="visible"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/myuploadedfile" />
 
     <Button
         android:id="@+id/uploadbutton"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
         android:text="UPLOAD IMAGE"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:background="@color/bg_main"
+        android:layout_gravity="end"
+        android:layout_marginRight="20dp"
+        android:background="#ec1e25"
         />
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_gravity="center"
-        android:hint="Name"
-        android:singleLine="true"
-        android:gravity="center"
-        android:background="@color/bg_login"
-        android:id="@+id/username"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
     <EditText
-        android:layout_width="250dp"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
+        android:inputType="textEmailAddress"
+        android:hint="Name"
+        android:singleLine="true"
+        android:textColorHint="#000000"
+        android:textColor="#000000"
+        android:id="@+id/username"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <EditText
+        android:layout_width="350dp"
         android:layout_height="40dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:hint="Contact"
-        android:gravity="center"
-        android:background="@color/bg_login"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:textColorHint="#000000"
+        android:textColor="#000000"
         android:phoneNumber="true"
         android:id="@+id/usercontact"/>
 
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:hint="e-mail"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColorHint="#000000"
+            android:textColor="#000000"
+            android:phoneNumber="true"
+            android:id="@+id/usermail"/>
+
+    </android.support.design.widget.TextInputLayout>
+
     <Button
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
         android:text="Submit"
-        android:background="@color/bg_main"
+        android:textColor="#000000"
+        android:background="#ec1e25"
         android:id="@+id/submitbtn"
         android:textStyle="bold"/>
 
 </LinearLayout>
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/uploadlogo"
+        />
 
 </FrameLayout>

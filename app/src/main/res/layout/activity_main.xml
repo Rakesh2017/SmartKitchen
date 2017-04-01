@@ -41,11 +41,11 @@
 
 
                     <ImageButton
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="30dp"
-                        android:background="@drawable/logo"
+                        android:background="@drawable/ourlogo1"
                         android:layout_marginTop="20dp"
                         android:id="@+id/rot"/>
 
@@ -62,7 +62,7 @@
                             android:hint="@string/hint_email"
                             android:inputType="textEmailAddress"
                             android:textColor="#000000"
-                            android:textColorHint="@android:color/white" />
+                            android:textColorHint="#000000" />
                     </android.support.design.widget.TextInputLayout>
 
 
@@ -90,7 +90,7 @@
                         android:layout_gravity="center"
                         android:layout_height="45dp"
                         android:layout_marginTop="20dip"
-                        android:background="#f2ff72"
+                        android:background="#ec1e25"
                         android:text="@string/btn_login"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -195,7 +195,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
                         android:text="@string/action_sign_in_short"
-                        android:background="#f2ff72"
+                        android:background="#ce2f41"
                         android:textStyle="bold"
                         android:textColor="#000000"/>
 
@@ -238,7 +238,15 @@
     </TabHost>
 
 
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="102dp"
+        android:layout_gravity="center_horizontal"
 
+        android:layout_marginLeft="100dp"
+        android:background="@drawable/ourlogo2"
+        android:layout_marginTop="70dp"
+        android:id="@+id/rot1"/>
 
 </RelativeLayout>
 

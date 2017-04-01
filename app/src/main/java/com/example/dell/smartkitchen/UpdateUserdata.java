@@ -47,6 +47,7 @@ public class UpdateUserdata extends Fragment {
     private Button uploadButton;
     EditText username;
     EditText usercontact;
+    EditText usermail;
     private static final int SELECT_PICTURE = 100;
 
     // creating an instance of Firebase Storage
@@ -58,6 +59,7 @@ public class UpdateUserdata extends Fragment {
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
     DatabaseReference refname = dparent.child("username");
     DatabaseReference refcontact = dparent.child("usercontact");
+    DatabaseReference refmail = dparent.child("usermail");
     Button submitbutton;
 
 
@@ -79,6 +81,7 @@ public class UpdateUserdata extends Fragment {
 
         username=(EditText)view.findViewById(R.id.username);
         usercontact=(EditText)view.findViewById(R.id.usercontact);
+        usermail=(EditText)view.findViewById(R.id.usermail);
         submitbutton=(Button)view.findViewById(R.id.submitbtn);
         Firebase.setAndroidContext(getContext());
 
@@ -99,7 +102,9 @@ public class UpdateUserdata extends Fragment {
             public void onClick(View v) {
                 refname.setValue(username.getText().toString().trim());
                 refcontact.setValue(usercontact.getText().toString().trim());
-                Toast.makeText(getContext(), "updated", Toast.LENGTH_SHORT).show();
+                refmail.setValue(usermail.getText().toString().trim());
+
+                Toast.makeText(getContext(), "profile updated", Toast.LENGTH_SHORT).show();
 
             }
         });
