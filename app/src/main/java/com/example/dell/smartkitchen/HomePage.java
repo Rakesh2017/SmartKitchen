@@ -163,6 +163,7 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_contact) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Contactus()).addToBackStack(null).commit();
 
         }
           else if (id == R.id.nav_about) {
