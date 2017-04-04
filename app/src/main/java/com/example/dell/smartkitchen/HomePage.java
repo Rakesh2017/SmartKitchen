@@ -1,6 +1,7 @@
 package com.example.dell.smartkitchen;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
@@ -147,7 +148,11 @@ public class HomePage extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile) {
+        if (id == R.id.nav_homepage) {
+            Intent intent = new Intent(getApplicationContext(), HomePage.class);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_profile) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new UserProfile()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_calenadar) {
@@ -160,7 +165,10 @@ public class HomePage extends AppCompatActivity
 
         } else if (id == R.id.nav_manual) {
 
-        } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_login) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);        }
+        else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_contact) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Contactus()).addToBackStack(null).commit();

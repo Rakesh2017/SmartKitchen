@@ -16,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="@drawable/giphy"
-
-        />
+      />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,13 +53,13 @@
        >
        <ImageView
            android:layout_width="0dp"
-           android:layout_height="match_parent"
-           android:background="@drawable/realtimebackhomepage"
+           android:layout_height="150dp"
+           android:background="@drawable/realtimedatapic"
            android:layout_weight="1"
            android:id="@+id/img1"/>
        <ImageView
            android:layout_width="0dp"
-           android:layout_height="match_parent"
+           android:layout_height="150dp"
            android:layout_weight="1"
            android:layout_marginLeft="3dp"
            android:background="@drawable/wholedatabackground"
@@ -106,14 +105,14 @@
         >
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/analyticsbackgroundhome"
+            android:layout_height="150dp"
+            android:background="@drawable/analyticspic"
             android:layout_weight="1"
             android:id="@+id/img3"/>
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="190dp"
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:background="@drawable/manualbackhome"
@@ -192,7 +191,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="270dp"
         android:layout_marginLeft="135dp"
-        android:background="@drawable/circularbackhomepage"
+        android:background="@drawable/forwardbutton1"
         android:id="@+id/circle1"
         />
     <ImageView
@@ -200,7 +199,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="270dp"
         android:layout_marginLeft="320dp"
-        android:background="@drawable/circularbackhomepage"
+        android:background="@drawable/forwardbutton1"
         android:id="@+id/circle2"
         />
 
@@ -209,7 +208,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="475dp"
         android:layout_marginLeft="135dp"
-        android:background="@drawable/circularbackhomepage"
+        android:background="@drawable/forwardbutton1"
         android:id="@+id/circle3"
         />
     <ImageView
@@ -217,7 +216,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="475dp"
         android:layout_marginLeft="320dp"
-        android:background="@drawable/circularbackhomepage"
+        android:background="@drawable/forwardbutton1"
         android:id="@+id/circle4"
         />
 

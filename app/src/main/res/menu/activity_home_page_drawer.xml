@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_homepage"
+            android:icon="@drawable/homepagelogomenu"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/image_icon"
             android:title="Profile" />
@@ -18,6 +22,11 @@
             android:id="@+id/nav_manual"
             android:icon="@drawable/manual_icon"
             android:title="Manual" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/loginmenuicon"
+            android:title="Login" />
+
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout_icon"
