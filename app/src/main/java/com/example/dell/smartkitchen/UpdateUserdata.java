@@ -1,6 +1,7 @@
 package com.example.dell.smartkitchen;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -36,10 +37,13 @@ import java.io.ByteArrayOutputStream;
 import javax.xml.transform.Result;
 
 
+
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class UpdateUserdata extends Fragment {
+
 
 
 
@@ -49,6 +53,7 @@ public class UpdateUserdata extends Fragment {
     EditText usercontact;
     EditText usermail;
     private static final int SELECT_PICTURE = 100;
+    final static int RESULT_OK=1;
 
     // creating an instance of Firebase Storage
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -77,7 +82,7 @@ public class UpdateUserdata extends Fragment {
         Firebase.setAndroidContext(getContext());
         //getting the reference of the views
         imageView = (ImageView)view.findViewById(R.id.imageview);
-        uploadButton = (Button)view.findViewById(R.id.uploadbutton);
+        uploadButton = (Button) view.findViewById(R.id.uploadbutton);
 
         username=(EditText)view.findViewById(R.id.username);
         usercontact=(EditText)view.findViewById(R.id.usercontact);
@@ -87,8 +92,11 @@ public class UpdateUserdata extends Fragment {
 
 
 
-        onImageViewClick(); // for selecting an Image from gallery.
-        onUploadButtonClick(); // for uploading the image to Firebase Storage.
+       onImageViewClick(); // for selecting an Image from gallery.
+       onUploadButtonClick(); // for uploading the image to Firebase Storage.
+
+
+
 
         return view;
     }
@@ -112,20 +120,23 @@ public class UpdateUserdata extends Fragment {
     }
 
 
+
+
     protected  void onImageViewClick(){
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent();
                 i.setType("image/*");
-                i.setAction(Intent.ACTION_GET_CONTENT);
+                //i.setAction(Intent.ACTION_GET_CONTENT);
+                i.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(i, "Select Picture"),SELECT_PICTURE );
             }
         });
 
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(resultCode==1){
+        if(resultCode==RESULT_OK){
             if(requestCode==SELECT_PICTURE){
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
@@ -139,17 +150,20 @@ public class UpdateUserdata extends Fragment {
             }
         }
     }
-    private String getPathFromURI(Uri contentUri) {
+    private String getPathFromURI(Uri contentUri) throws NullPointerException{
         String res = null;
         String[] proj = {MediaStore.Images.Media.DATA};
         Cursor cursor = getContext().getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
+
+            if (cursor.moveToFirst()) {
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                res = cursor.getString(column_index);
+            }
+            cursor.close();
+            return res;
         }
-        cursor.close();
-        return res;
-    }
+
+
 
     protected void onUploadButtonClick(){
 
@@ -187,3 +201,4 @@ public class UpdateUserdata extends Fragment {
 
     }
 }
+
