@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
+import static android.app.Activity.RESULT_OK;
 import com.firebase.client.Config;
 import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -53,7 +53,8 @@ public class UpdateUserdata extends Fragment {
     EditText usercontact;
     EditText usermail;
     private static final int SELECT_PICTURE = 100;
-    final static int RESULT_OK=1;
+
+
 
     // creating an instance of Firebase Storage
     FirebaseStorage storage = FirebaseStorage.getInstance();
