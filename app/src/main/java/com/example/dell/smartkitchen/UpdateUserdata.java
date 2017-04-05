@@ -147,7 +147,7 @@ public class UpdateUserdata extends Fragment {
             mProgress.setMessage("uploading...");
             mProgress.show();
             Uri uri = data.getData();
-            StorageReference filepath = mStorage.child(uri.getLastPathSegment());
+            StorageReference filepath = mStorage.child("ProfilePhotos").child("userimage");
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

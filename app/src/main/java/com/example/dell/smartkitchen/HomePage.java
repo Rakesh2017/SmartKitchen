@@ -46,9 +46,12 @@ public class HomePage extends AppCompatActivity
     ImageView img3;
     ImageView img4;
 
+    TextView messagetext;
+
     Animation circlesanimation;
     TextView userprofilenamehomepage;
     Animation slidedownanimation;
+    Animation blinkanimation;
     DatabaseReference dparent  = FirebaseDatabase.getInstance().getReference();
     DatabaseReference refname = dparent.child("username");
 
@@ -73,9 +76,11 @@ public class HomePage extends AppCompatActivity
         img2=(ImageView)findViewById(R.id.img2);
         img3=(ImageView)findViewById(R.id.img3);
         img4=(ImageView)findViewById(R.id.img4);
+        messagetext=(TextView)findViewById(R.id.messagesanimate);
 
         circlesanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecircles);
         slidedownanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slidedown);
+        blinkanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blinkmessage);
         circle1.startAnimation(circlesanimation);
         circle2.startAnimation(circlesanimation);
         circle3.startAnimation(circlesanimation);
@@ -84,6 +89,7 @@ public class HomePage extends AppCompatActivity
         img2.startAnimation(slidedownanimation);
         img3.startAnimation(slidedownanimation);
         img4.startAnimation(slidedownanimation);
+        messagetext.startAnimation(blinkanimation);
 
         userprofilenamehomepage=(TextView)findViewById(R.id.userprofilenamehomepage);
         listview=(ListView)findViewById(R.id.listview1);
