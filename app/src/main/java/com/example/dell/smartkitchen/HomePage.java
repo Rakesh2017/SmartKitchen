@@ -206,6 +206,10 @@ public class HomePage extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Messages()).addToBackStack(null).commit();
 
 
+        } else if (id == R.id.nav_feedback) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FeedBack()).addToBackStack(null).commit();
+
+
         } else if (id == R.id.nav_manual) {
 
         } else if (id == R.id.nav_login) {

@@ -18,6 +18,12 @@
             android:id="@+id/nav_messages"
             android:icon="@drawable/message_icon"
             android:title="Messages" />
+
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/feedbackicon"
+            android:title="Feedback" />
+
         <item
             android:id="@+id/nav_manual"
             android:icon="@drawable/manual_icon"
