@@ -220,4 +220,31 @@
         android:id="@+id/circle4"
         />
 
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="537dp"
+        android:id="@+id/listview1"
+        android:dividerHeight="2dp"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbarFadeDuration="300"
+        android:background="#2b508c"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Messages"
+        android:layout_marginTop="555dp"
+        android:layout_marginLeft="250dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:id="@+id/messagesanimate"
+        />
+
 </RelativeLayout>

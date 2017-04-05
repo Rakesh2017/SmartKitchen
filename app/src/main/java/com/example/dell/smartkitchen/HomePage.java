@@ -19,7 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +51,13 @@ public class HomePage extends AppCompatActivity
     Animation slidedownanimation;
     DatabaseReference dparent  = FirebaseDatabase.getInstance().getReference();
     DatabaseReference refname = dparent.child("username");
+
+    ListView listview;
+    ArrayList<String> list=new ArrayList<>();
+
+    ArrayAdapter<String> adapter;
+    DatabaseReference dparent1 = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference dref1=dparent.child("messages");
 
 
     @Override
@@ -75,6 +86,10 @@ public class HomePage extends AppCompatActivity
         img4.startAnimation(slidedownanimation);
 
         userprofilenamehomepage=(TextView)findViewById(R.id.userprofilenamehomepage);
+        listview=(ListView)findViewById(R.id.listview1);
+        adapter=new ArrayAdapter<>(HomePage.this,android.R.layout.simple_list_item_1,list);
+        listview.setAdapter(adapter);
+
 
 
         //fragment
@@ -99,7 +114,7 @@ public class HomePage extends AppCompatActivity
                       @Override
                       public void onDataChange(DataSnapshot dataSnapshot) {
                           String name = dataSnapshot.getValue(String.class);
-                          userprofilenamehomepage.setText("Hi "+name);
+                          userprofilenamehomepage.setText("Hi " + name);
                       }
 
                       @Override
@@ -107,6 +122,28 @@ public class HomePage extends AppCompatActivity
 
                       }
                   });
+
+
+        dref1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                for(com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                {
+                    String name = dataSnapshot1.getValue(String.class);
+                    list.add(name);
+                    adapter.notifyDataSetChanged();
+                }
+
+
+                // String name = dataSnapshot.child("messages").child("A").getValue(String.class);
+                //list.add(name);
+                //adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
