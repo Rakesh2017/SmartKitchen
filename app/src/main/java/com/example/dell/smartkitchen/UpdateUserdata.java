@@ -47,19 +47,24 @@ public class UpdateUserdata extends Fragment {
 
 
 
-    private ImageView imageView;
+    //private ImageView imageView;
     private Button uploadButton;
     EditText username;
     EditText usercontact;
     EditText usermail;
-    private static final int SELECT_PICTURE = 100;
+    private static final int GALLERY_INTENT = 2;
+    private Button mSelctImage;
+    private Button uploadimage;
+    private StorageReference mStorage;
+    private ProgressDialog mProgress;
+
 
 
 
     // creating an instance of Firebase Storage
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+   // FirebaseStorage storage = FirebaseStorage.getInstance();
     //creating a storage reference. Replace the below URL with your Firebase storage URL.
-    StorageReference storageRef = storage.getReferenceFromUrl("gs://smart-kitchen-29de5.appspot.com");
+    //StorageReference storageRef = storage.getReferenceFromUrl("gs://smart-kitchen-29de5.appspot.com");
 
 
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
@@ -80,21 +85,35 @@ public class UpdateUserdata extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_update_userdata, container, false);
-        Firebase.setAndroidContext(getContext());
+        mStorage=FirebaseStorage.getInstance().getReference();
+        mSelctImage=(Button)view.findViewById(R.id.uploadbutton);
+        mProgress= new ProgressDialog(getContext());
+
+        //Firebase.setAndroidContext(getContext());
         //getting the reference of the views
-        imageView = (ImageView)view.findViewById(R.id.imageview);
-        uploadButton = (Button) view.findViewById(R.id.uploadbutton);
+      //  imageView = (ImageView)view.findViewById(R.id.imageview);
+       // uploadButton = (Button) view.findViewById(R.id.uploadbutton);
 
         username=(EditText)view.findViewById(R.id.username);
         usercontact=(EditText)view.findViewById(R.id.usercontact);
         usermail=(EditText)view.findViewById(R.id.usermail);
         submitbutton=(Button)view.findViewById(R.id.submitbtn);
-        Firebase.setAndroidContext(getContext());
+       // Firebase.setAndroidContext(getContext());
+         mSelctImage.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                 intent.setType("image/*");
+                 startActivityForResult(intent, GALLERY_INTENT);
+
+             }
+         });
 
 
+       //onImageViewClick(); // for selecting an Image from gallery.
+       //onUploadButtonClick(); // for uploading the image to Firebase Storage.
 
-       onImageViewClick(); // for selecting an Image from gallery.
-       onUploadButtonClick(); // for uploading the image to Firebase Storage.
 
 
 
@@ -123,7 +142,28 @@ public class UpdateUserdata extends Fragment {
 
 
 
-    protected  void onImageViewClick(){
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK){
+            mProgress.setMessage("uploading...");
+            mProgress.show();
+            Uri uri = data.getData();
+            StorageReference filepath = mStorage.child(uri.getLastPathSegment());
+            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(getContext(), "Upload Success", Toast.LENGTH_SHORT).show();
+                    mProgress.dismiss();
+                }
+            });
+
+
+        }
+    }
+
+
+
+
+   /* protected  void onImageViewClick(){
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,6 +240,6 @@ public class UpdateUserdata extends Fragment {
             }
         });
 
-    }
+    }*/
 }
 
