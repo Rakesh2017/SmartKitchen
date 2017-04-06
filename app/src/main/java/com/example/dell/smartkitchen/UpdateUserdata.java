@@ -137,7 +137,7 @@ public class UpdateUserdata extends Fragment {
 
 
         }
-        if (requestCode == CAMERA_REQUEST_CODE && requestCode == RESULT_OK) {
+           if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             mProgress.setMessage("uploading...");
             mProgress.show();
             Uri uri = data.getData();
