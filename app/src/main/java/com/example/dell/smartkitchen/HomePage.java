@@ -47,6 +47,7 @@ public class HomePage extends AppCompatActivity
     ImageView img4;
 
     TextView messagetext;
+    TextView sensorscondition;
 
     Animation circlesanimation;
     TextView userprofilenamehomepage;
@@ -60,7 +61,11 @@ public class HomePage extends AppCompatActivity
 
     ArrayAdapter<String> adapter;
     DatabaseReference dparent1 = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference dref1=dparent.child("messages");
+    DatabaseReference dref1=dparent1.child("messages");
+
+    DatabaseReference dparent3 = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference dsensorchild=dparent3.child("sensorstatus");
+
 
 
     @Override
@@ -77,6 +82,8 @@ public class HomePage extends AppCompatActivity
         img3=(ImageView)findViewById(R.id.img3);
         img4=(ImageView)findViewById(R.id.img4);
         messagetext=(TextView)findViewById(R.id.messagesanimate);
+        sensorscondition=(TextView)findViewById(R.id.sensorscondition);
+        sensorscondition.setSelected(true);
 
         circlesanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecircles);
         slidedownanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slidedown);
@@ -128,6 +135,19 @@ public class HomePage extends AppCompatActivity
 
                       }
                   });
+
+        dsensorchild.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String status = dataSnapshot.getValue(String.class);
+                sensorscondition.setText(status);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
         dref1.addValueEventListener(new ValueEventListener() {
@@ -206,7 +226,14 @@ public class HomePage extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Messages()).addToBackStack(null).commit();
 
 
-        } else if (id == R.id.nav_feedback) {
+        } else if (id == R.id.nav_maps) {
+            Intent intent = new Intent(getApplicationContext(),UserLocation.class);
+            startActivity(intent);
+
+
+        }
+
+        else if (id == R.id.nav_feedback) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FeedBack()).addToBackStack(null).commit();
 
 

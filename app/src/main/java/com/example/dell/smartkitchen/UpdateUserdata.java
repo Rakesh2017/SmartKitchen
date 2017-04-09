@@ -23,7 +23,6 @@ import com.google.firebase.storage.UploadTask;
 
 
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -39,6 +38,7 @@ public class UpdateUserdata extends Fragment {
     private Button mSelctImage;
     private Button uploadimage;
     private StorageReference mStorage;
+    private StorageReference mStorage1;
     private ProgressDialog mProgress;
 
     private Button mUploadbtn;
@@ -64,6 +64,7 @@ public class UpdateUserdata extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_update_userdata, container, false);
         mStorage = FirebaseStorage.getInstance().getReference();
+        mStorage1 = FirebaseStorage.getInstance().getReference();
         mSelctImage = (Button) view.findViewById(R.id.uploadbutton);
         mUploadbtn = (Button) view.findViewById(R.id.uploadbuttoncamera);
         mProgress = new ProgressDialog(getContext());
@@ -92,14 +93,18 @@ public class UpdateUserdata extends Fragment {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, CAMERA_REQUEST_CODE);
 
+
             }
-        });
+
+            });
+
 
 
 
 
         return view;
     }
+
 
     public void onStart() {
         super.onStart();
@@ -119,12 +124,32 @@ public class UpdateUserdata extends Fragment {
     }
 
 
-    public void onActivityResult(final int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(final int requestCode, int resultCode,final Intent data) {
+
+        super.onActivityResult(requestCode,resultCode, data);
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            mProgress.setMessage("uploading...");
+            mProgress.show();
+            Uri uri = data.getData();
+            StorageReference filepath1 = mStorage.child("ProfilePhotos").child("userimage");
+            filepath1.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(getContext(), "Upload Success", Toast.LENGTH_SHORT).show();
+                    mProgress.dismiss();
+
+
+                }
+            });
+        }
+
         if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
             mProgress.setMessage("uploading...");
             mProgress.show();
             Uri uri = data.getData();
-            StorageReference filepath = mStorage.child("ProfilePhotos").child("userimage");
+
+
+            StorageReference filepath = mStorage1.child("ProfilePhotos").child("userimage");
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -136,22 +161,9 @@ public class UpdateUserdata extends Fragment {
             });
 
 
-        }
-           if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
-            mProgress.setMessage("uploading...");
-            mProgress.show();
-            Uri uri = data.getData();
-            StorageReference filepath = mStorage.child("ProfilePhotos").child("userimage");
-            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getContext(), "Upload Success", Toast.LENGTH_SHORT).show();
-                    mProgress.dismiss();
 
-
-                }
-            });
         }
+
 
     }
 }
