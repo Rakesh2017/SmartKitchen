@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homebackground"
+    android:background="@drawable/sample7"
     android:clickable="true"
     tools:context="com.example.dell.smartkitchen.UserProfile">
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:background="#ec1e25"
         android:text="PROFILE"
         android:textSize="50dp"
