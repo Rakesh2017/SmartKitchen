@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -82,8 +83,12 @@ public class HomePage extends AppCompatActivity
         img3=(ImageView)findViewById(R.id.img3);
         img4=(ImageView)findViewById(R.id.img4);
         messagetext=(TextView)findViewById(R.id.messagesanimate);
+
+
+
         sensorscondition=(TextView)findViewById(R.id.sensorscondition);
         sensorscondition.setSelected(true);
+
 
         circlesanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotatecircles);
         slidedownanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slidedown);
@@ -97,6 +102,7 @@ public class HomePage extends AppCompatActivity
         img3.startAnimation(slidedownanimation);
         img4.startAnimation(slidedownanimation);
         messagetext.startAnimation(blinkanimation);
+
 
         userprofilenamehomepage=(TextView)findViewById(R.id.userprofilenamehomepage);
         listview=(ListView)findViewById(R.id.listview1);
@@ -118,7 +124,11 @@ public class HomePage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
+
+
 
     protected void onStart(){
         super.onStart();

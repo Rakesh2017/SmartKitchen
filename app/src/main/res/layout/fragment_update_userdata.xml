@@ -79,6 +79,7 @@
         android:singleLine="true"
         android:textColorHint="#000000"
         android:textColor="#000000"
+        android:textSize="25dp"
         android:id="@+id/username"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -90,7 +91,7 @@
     <EditText
         android:layout_width="350dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:hint="Contact"
         android:inputType="textEmailAddress"
@@ -98,6 +99,7 @@
         android:textColorHint="#000000"
         android:textColor="#000000"
         android:phoneNumber="true"
+        android:textSize="25dp"
         android:id="@+id/usercontact"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -110,7 +112,7 @@
         <EditText
             android:layout_width="350dp"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center"
             android:hint="e-mail"
             android:inputType="textEmailAddress"
@@ -118,6 +120,7 @@
             android:textColorHint="#000000"
             android:textColor="#000000"
             android:phoneNumber="true"
+            android:textSize="25dp"
             android:id="@+id/usermail"/>
 
     </android.support.design.widget.TextInputLayout>

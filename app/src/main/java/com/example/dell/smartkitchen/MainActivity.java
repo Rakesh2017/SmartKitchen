@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
     Animation animation;
     ImageButton imageButton1;
 
+    EditText smartkeyet;
+    String smartkeyvalue;
+    DatabaseReference smartref=FirebaseDatabase.getInstance().getReference();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences=getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
+
+        smartkeyet=(EditText)findViewById(R.id.smartkey);
 
         //tab widget
         tabHost = (TabHost) findViewById(R.id.tabHost);
@@ -153,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
                                     // there was an error
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
+                                    } else if(!smartkeyet.getText().toString().trim().equals(smartkeyvalue)){
+                                        Toast.makeText(MainActivity.this, "incorrect Smart-key ! Account creation denied...", Toast.LENGTH_LONG).show();
                                     } else {
                                         Toast.makeText(getApplicationContext(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
@@ -221,6 +229,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    protected void onStart(){
+        super.onStart();
+
+        smartref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                smartkeyvalue=dataSnapshot.child("smartkey").getValue(String.class);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
