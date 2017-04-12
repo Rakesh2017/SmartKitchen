@@ -32,11 +32,11 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="#b38e62"
+        android:background="#b38e62"
         android:layout_marginTop="300dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/roundrect"
+        android:src="@drawable/roundrect"
         />
 
 

@@ -13,6 +13,8 @@
 
 
 
+
+
   <ImageView
       android:layout_width="match_parent"
       android:layout_height="130dp"
@@ -47,6 +49,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginTop="105dp"
+        android:src="@drawable/roundrect1"
         android:background="#dab653"
         android:gravity="center"
         android:singleLine="true"
@@ -72,8 +75,8 @@
        <ImageView
            android:layout_width="0dp"
            android:layout_height="150dp"
-           android:src="@drawable/realtimedatapic"
-           android:background="@drawable/roundrect"
+           android:background="@drawable/realtimedatapic"
+           android:src="@drawable/roundrect"
            android:layout_weight="1"
            android:id="@+id/img1"/>
        <ImageView
@@ -81,8 +84,8 @@
            android:layout_height="150dp"
            android:layout_weight="1"
            android:layout_marginLeft="3dp"
-           android:src="@drawable/wholetimedatalogo4"
-           android:background="@drawable/roundrect"
+           android:background="@drawable/wholetimedatalogo4"
+           android:src="@drawable/roundrect"
            android:id="@+id/img2"/>
 
    </LinearLayout>
@@ -99,18 +102,21 @@
 
 
 
-        <Button
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="#a3d77b"
+            android:src="@drawable/roundrect1"
+            android:id="@+id/imghomepage1"
             android:layout_weight="1"/>
 
-        <Button
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
-            android:background="@color/btn_logut_bg"/>
+            android:background="@color/btn_logut_bg"
+            android:src="@drawable/roundrect1" />
 
     </LinearLayout>
 
@@ -126,8 +132,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:src="@drawable/analyticspic"
-            android:background="@drawable/roundrect"
+            android:background="@drawable/analyticspic"
+            android:src="@drawable/roundrect"
             android:layout_weight="1"
             android:id="@+id/img3"/>
 
@@ -136,8 +142,8 @@
             android:layout_height="190dp"
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
-            android:src="@drawable/aboutiotlogo"
-            android:background="@drawable/roundrect"
+            android:background="@drawable/aboutiotlogo"
+            android:src="@drawable/roundrect"
             android:id="@+id/img4"/>
 
     </LinearLayout>
@@ -151,17 +157,19 @@
         android:weightSum="2"
         android:layout_marginTop="466dp"
         >
-        <Button
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@color/colorAccent"
+            android:src="@drawable/roundrect1"
             android:layout_weight="1"/>
-        <Button
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
-            android:background="#b67b2d"/>
+            android:background="#b67b2d"
+            android:src="@drawable/roundrect1" />
 
     </LinearLayout>
 
@@ -269,6 +277,7 @@
         android:textStyle="bold"
         android:id="@+id/messagesanimate"
         />
+
 
 
 </RelativeLayout>

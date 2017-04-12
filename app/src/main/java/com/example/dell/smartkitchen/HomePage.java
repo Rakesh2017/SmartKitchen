@@ -21,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class HomePage extends AppCompatActivity
     ImageView img2;
     ImageView img3;
     ImageView img4;
+    ImageButton imageButton;
 
     TextView messagetext;
     TextView sensorscondition;
@@ -82,6 +84,14 @@ public class HomePage extends AppCompatActivity
         img2=(ImageView)findViewById(R.id.img2);
         img3=(ImageView)findViewById(R.id.img3);
         img4=(ImageView)findViewById(R.id.img4);
+        imageButton=(ImageButton)findViewById(R.id.imghomepage1);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new RealTimeData()).addToBackStack(null).commit();
+
+            }
+        });
         messagetext=(TextView)findViewById(R.id.messagesanimate);
 
 

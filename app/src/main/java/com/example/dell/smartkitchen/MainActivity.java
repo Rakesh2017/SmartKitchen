@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     EditText smartkeyet;
     String smartkeyvalue;
     DatabaseReference smartref=FirebaseDatabase.getInstance().getReference();
+    DatabaseReference smartref1=smartref.child("smartkey");
 
 
     @Override
@@ -187,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String email1 = inputEmail1.getText().toString().trim();
                 String password1 = inputPassword1.getText().toString().trim();
+                String smartkey1= smartkeyet.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email1)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -200,6 +202,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if (password1.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(smartkey1)) {
+                    Toast.makeText(getApplicationContext(), "Enter Smart Key!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!smartkey1.equals(smartkeyvalue)) {
+                    Toast.makeText(getApplicationContext(),"incorrect Smart-key ! Account creation denied...", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -233,10 +243,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
 
-        smartref.addValueEventListener(new ValueEventListener() {
+        smartref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                smartkeyvalue=dataSnapshot.child("smartkey").getValue(String.class);
+                smartkeyvalue=dataSnapshot.getValue(String.class);
 
             }
 

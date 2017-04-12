@@ -22,7 +22,7 @@
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ec1e25"></TabWidget>
+                android:background="#ea4a4a"></TabWidget>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -93,7 +93,7 @@
                         android:layout_gravity="center"
                         android:layout_height="45dp"
                         android:layout_marginTop="20dip"
-                        android:background="#ec1e25"
+                        android:background="#ea4949"
                         android:text="@string/btn_login"
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
@@ -214,7 +214,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
                         android:text="@string/action_sign_in_short"
-                        android:background="#ce2f41"
+                        android:background="#ea4a4a"
                         android:textStyle="bold"
                         android:textColor="#000000"/>
 

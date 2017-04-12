@@ -26,11 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="120dp"
+        android:gravity="right"
+        android:layout_gravity="right"
         android:singleLine="false"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#dec583"
+        android:background="#7aaae4"
         android:id="@+id/feedbacktext"
+        android:lines="20"
+        android:src="@drawable/roundrect"
         />
 
     <Button
