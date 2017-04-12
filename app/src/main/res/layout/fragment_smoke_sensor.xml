@@ -1,0 +1,157 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sample7"
+    tools:context="com.example.dell.smartkitchen.SmokeSensorFrag">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ed5a5a"
+        android:text="Smoke Sensor"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/bg_main"
+            android:textColor="#000000"
+            android:layout_marginLeft="80dp"
+            android:text="Status"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_login"
+            android:layout_marginLeft="220dp"
+            android:text="Status"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/bg_main"
+            android:textColor="#000000"
+            android:layout_marginRight="80dp"
+            android:text="Real_time Reading"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_login"
+            android:layout_marginRight="220dp"
+            android:text="nil"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/bg_main"
+            android:textColor="#000000"
+            android:layout_marginLeft="80dp"
+            android:text="ALARM "
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_login"
+            android:layout_marginLeft="220dp"
+            android:text="OFF"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/bg_main"
+            android:textColor="#000000"
+            android:layout_marginRight="80dp"
+            android:text="Exhaust Fan"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_login"
+            android:layout_marginRight="220dp"
+            android:text="OFF"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/bg_main"
+            android:textColor="#000000"
+            android:layout_marginLeft="80dp"
+            android:text="Smoke/Lekeage "
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_login"
+            android:layout_marginLeft="220dp"
+            android:text="NO !"
+            android:layout_marginTop="2dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

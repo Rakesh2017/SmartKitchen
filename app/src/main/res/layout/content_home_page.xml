@@ -76,7 +76,6 @@
            android:layout_width="0dp"
            android:layout_height="150dp"
            android:background="@drawable/realtimedatapic"
-           android:src="@drawable/roundrect"
            android:layout_weight="1"
            android:id="@+id/img1"/>
        <ImageView
@@ -85,7 +84,6 @@
            android:layout_weight="1"
            android:layout_marginLeft="3dp"
            android:background="@drawable/wholetimedatalogo4"
-           android:src="@drawable/roundrect"
            android:id="@+id/img2"/>
 
    </LinearLayout>
@@ -133,7 +131,6 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:background="@drawable/analyticspic"
-            android:src="@drawable/roundrect"
             android:layout_weight="1"
             android:id="@+id/img3"/>
 
@@ -143,7 +140,6 @@
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:background="@drawable/aboutiotlogo"
-            android:src="@drawable/roundrect"
             android:id="@+id/img4"/>
 
     </LinearLayout>
@@ -169,7 +165,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:background="#b67b2d"
-            android:src="@drawable/roundrect1" />
+            android:src="@drawable/roundrect1"/>
 
     </LinearLayout>
 
@@ -187,7 +183,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  Whole-Time \n  Data"
+        android:text="  Historical \n  Data"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:layout_marginTop="265dp"
@@ -208,7 +204,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  About\n  IOT"
+        android:text="  Configure"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:layout_marginTop="470dp"

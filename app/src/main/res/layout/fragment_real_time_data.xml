@@ -7,5 +7,66 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="REAL-TIME"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:background="#ef3434"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_login"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="70dp"
+            android:text="Catalogue"
+            android:textSize="20dp"
+            android:id="@+id/realbtn1"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_main"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="70dp"
+            android:text="Smoke Sensor"
+            android:textSize="20dp"
+            android:id="@+id/realbtn2"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#cfa551"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="70dp"
+            android:text="Water Sensor"
+            android:textSize="20dp"
+            android:id="@+id/realbtn3"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/btn_logut_bg"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="70dp"
+            android:text="Light Automation"
+            android:textSize="20dp"
+            android:id="@+id/realbtn4"
+            />
+
+
+
+</LinearLayout>
 
 </FrameLayout>
