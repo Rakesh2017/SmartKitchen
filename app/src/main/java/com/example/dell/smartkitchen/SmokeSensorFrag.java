@@ -28,9 +28,11 @@ public class SmokeSensorFrag extends Fragment {
     TextView fan2;
     TextView leak1;
     TextView leak2;
+    TextView head;
 
     Animation animation1;
     Animation animation2;
+    Animation animation3;
 
 
 
@@ -47,6 +49,7 @@ public class SmokeSensorFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_smoke_sensor, container, false);
         animation1= AnimationUtils.loadAnimation(getContext(),R.anim.realrlanimate);
         animation2= AnimationUtils.loadAnimation(getContext(),R.anim.reallranimate);
+        animation3= AnimationUtils.loadAnimation(getContext(),R.anim.blink);
 
         status1=(TextView)view.findViewById(R.id.ss1);
         status2=(TextView)view.findViewById(R.id.ss2);
@@ -62,6 +65,20 @@ public class SmokeSensorFrag extends Fragment {
 
         leak1=(TextView)view.findViewById(R.id.ss9);
         leak2=(TextView)view.findViewById(R.id.ss10);
+
+        head=(TextView)view.findViewById(R.id.smokesensorheading);
+        head.startAnimation(animation3);
+
+        status1.startAnimation(animation1);
+        status2.startAnimation(animation1);
+        realtimedata1.startAnimation(animation2);
+        realtimedata2.startAnimation(animation2);
+        alarm1.startAnimation(animation1);
+        alarm2.startAnimation(animation1);
+        fan1.startAnimation(animation2);
+        fan2.startAnimation(animation2);
+        leak1.startAnimation(animation1);
+        leak2.startAnimation(animation1);
 
 
 
