@@ -47,10 +47,26 @@ public class RealTimeData extends Fragment {
         btn3.startAnimation(animation2);
         btn4.startAnimation(animation1);
 
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new CatalogueFrag()).addToBackStack(null).commit();
+
+            }
+        });
+
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container,new SmokeSensorFrag()).addToBackStack(null).commit();
+
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,new WaterSensorFrag()).addToBackStack(null).commit();
 
             }
         });

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -29,6 +30,11 @@ public class SmokeSensorFrag extends Fragment {
     TextView leak1;
     TextView leak2;
     TextView head;
+    TextView condition1;
+    TextView condition2;
+
+    Button button1;
+    Button button2;
 
     Animation animation1;
     Animation animation2;
@@ -51,6 +57,11 @@ public class SmokeSensorFrag extends Fragment {
         animation2= AnimationUtils.loadAnimation(getContext(),R.anim.reallranimate);
         animation3= AnimationUtils.loadAnimation(getContext(),R.anim.blink);
 
+        button1=(Button)view.findViewById(R.id.ssb1);
+        button1.startAnimation(animation1);
+        button2=(Button)view.findViewById(R.id.ssb2);
+        button2.startAnimation(animation2);
+
         status1=(TextView)view.findViewById(R.id.ss1);
         status2=(TextView)view.findViewById(R.id.ss2);
 
@@ -66,8 +77,11 @@ public class SmokeSensorFrag extends Fragment {
         leak1=(TextView)view.findViewById(R.id.ss9);
         leak2=(TextView)view.findViewById(R.id.ss10);
 
+        condition1=(TextView)view.findViewById(R.id.ss11);
+        condition2=(TextView)view.findViewById(R.id.ss12);
+
         head=(TextView)view.findViewById(R.id.smokesensorheading);
-        head.startAnimation(animation3);
+       // head.startAnimation(animation3);
 
         status1.startAnimation(animation1);
         status2.startAnimation(animation1);
@@ -79,6 +93,8 @@ public class SmokeSensorFrag extends Fragment {
         fan2.startAnimation(animation2);
         leak1.startAnimation(animation1);
         leak2.startAnimation(animation1);
+        condition1.startAnimation(animation2);
+        condition2.startAnimation(animation1);
 
 
 

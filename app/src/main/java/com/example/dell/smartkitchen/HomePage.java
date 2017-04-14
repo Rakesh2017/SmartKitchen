@@ -258,6 +258,8 @@ public class HomePage extends AppCompatActivity
 
 
         } else if (id == R.id.nav_manual) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Manual()).addToBackStack(null).commit();
+
 
         } else if (id == R.id.nav_login) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
