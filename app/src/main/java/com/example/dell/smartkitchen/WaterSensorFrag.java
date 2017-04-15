@@ -44,9 +44,9 @@ public class WaterSensorFrag extends Fragment {
         animation2= AnimationUtils.loadAnimation(getContext(),R.anim.reallranimate);
 
         button1=(Button)view.findViewById(R.id.wsb1);
-        button1.startAnimation(animation1);
+        button1.startAnimation(animation2);
         button2=(Button)view.findViewById(R.id.wsb2);
-        button2.startAnimation(animation2);
+        button2.startAnimation(animation1);
 
         status1=(TextView)view.findViewById(R.id.ws1);
         status2=(TextView)view.findViewById(R.id.ws2);

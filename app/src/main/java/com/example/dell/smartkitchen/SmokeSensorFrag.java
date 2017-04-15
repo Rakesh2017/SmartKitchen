@@ -58,9 +58,9 @@ public class SmokeSensorFrag extends Fragment {
         animation3= AnimationUtils.loadAnimation(getContext(),R.anim.blink);
 
         button1=(Button)view.findViewById(R.id.ssb1);
-        button1.startAnimation(animation1);
+        button1.startAnimation(animation2);
         button2=(Button)view.findViewById(R.id.ssb2);
-        button2.startAnimation(animation2);
+        button2.startAnimation(animation1);
 
         status1=(TextView)view.findViewById(R.id.ss1);
         status2=(TextView)view.findViewById(R.id.ss2);

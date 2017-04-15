@@ -18,7 +18,6 @@ public class Manual extends Fragment {
 
     WebView webView;
 
-
     public Manual() {
         // Required empty public constructor
     }
