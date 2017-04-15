@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Catalogue List"
+        android:text="Catalogue"
         android:textSize="30dp"
         android:gravity="center"
         android:background="#fd3232"
@@ -47,7 +47,7 @@
         />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
                 android:background="#b4842b"
@@ -87,7 +87,7 @@
             android:layout_gravity="center"
             android:id="@+id/clspinner"
             android:scrollbars="vertical"
-            android:background="@color/btn_logut_bg"
+
             ></Spinner>
 
         </LinearLayout>
@@ -125,7 +125,7 @@
 
                     />
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="90dp"
                     android:layout_height="50dp"
                     android:background="#e46731"
                     android:textColor="#000000"
@@ -156,7 +156,7 @@
 
                 />
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="50dp"
                 android:background="#e46731"
                 android:textColor="#000000"

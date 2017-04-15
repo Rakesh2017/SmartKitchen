@@ -160,9 +160,7 @@ public class MainActivity extends AppCompatActivity {
                                     // there was an error
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
-                                    } else if(!smartkeyet.getText().toString().trim().equals(smartkeyvalue)){
-                                        Toast.makeText(MainActivity.this, "incorrect Smart-key ! Account creation denied...", Toast.LENGTH_LONG).show();
-                                    } else {
+                                    }else {
                                         Toast.makeText(getApplicationContext(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
