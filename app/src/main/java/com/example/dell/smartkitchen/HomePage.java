@@ -51,6 +51,9 @@ public class HomePage extends AppCompatActivity
 
     TextView messagetext;
     TextView sensorscondition;
+    ImageButton configuration;
+    ImageButton historical;
+    ImageButton analytics;
 
     Animation circlesanimation;
     TextView userprofilenamehomepage;
@@ -85,6 +88,10 @@ public class HomePage extends AppCompatActivity
         img3=(ImageView)findViewById(R.id.img3);
         img4=(ImageView)findViewById(R.id.img4);
         imageButton=(ImageButton)findViewById(R.id.imghomepage1);
+        configuration=(ImageButton)findViewById(R.id.configurationid);
+        analytics=(ImageButton)findViewById(R.id.analyticsgraphs);
+        historical=(ImageButton)findViewById(R.id.historicaldata);
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +99,32 @@ public class HomePage extends AppCompatActivity
 
             }
         });
+
+        configuration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ConfigurationData()).addToBackStack(null).commit();
+
+            }
+        });
+
+        historical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Historicaldata()).addToBackStack(null).commit();
+
+            }
+        });
+
+        analytics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AnalyticsData()).addToBackStack(null).commit();
+
+            }
+        });
+
+
         messagetext=(TextView)findViewById(R.id.messagesanimate);
 
 

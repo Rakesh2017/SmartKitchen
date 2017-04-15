@@ -58,12 +58,7 @@ public class CatalogueFrag extends Fragment {
         cataloguenumber=(TextView)view.findViewById(R.id.cl2);
         clspinner=(Spinner)view.findViewById(R.id.clspinner);
 
-        clspinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
 
 
         return view;

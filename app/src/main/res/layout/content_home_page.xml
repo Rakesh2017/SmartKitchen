@@ -114,6 +114,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:background="@color/btn_logut_bg"
+            android:id="@+id/historicaldata"
             android:src="@drawable/roundrect1" />
 
     </LinearLayout>
@@ -158,6 +159,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorAccent"
             android:src="@drawable/roundrect1"
+            android:id="@+id/analyticsgraphs"
             android:layout_weight="1"/>
         <ImageButton
             android:layout_width="0dp"
@@ -165,6 +167,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:background="#b67b2d"
+            android:id="@+id/configurationid"
             android:src="@drawable/roundrect1"/>
 
     </LinearLayout>
