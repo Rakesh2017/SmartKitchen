@@ -57,7 +57,7 @@ public class MarketVisitSchedules extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for(int i=1 ; i<=dataSnapshot.getChildrenCount();i++)
+                for(long i=dataSnapshot.getChildrenCount() ; i>=1 ;i--)
                 {
                     String marketname = dataSnapshot.child("VisitDay"+i).child("MarketName").getValue(String.class);
                     String date = dataSnapshot.child("VisitDay"+i).child("date").getValue(String.class);
