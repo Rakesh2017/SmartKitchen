@@ -1,0 +1,94 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundwithoutsklogo"
+    tools:context="com.example.dell.smartkitchen.MarketCalendar">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+
+            <EditText
+                android:id="@+id/etmarketname"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Super Market Name"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+
+
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/marketcalendar"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#ffffff"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:textStyle="bold"
+               android:text="All Scheduled Visits"
+               android:textColor="#000000"
+               android:layout_weight="1"
+               android:background="#e9c33b"
+               android:layout_marginRight="10dp"
+               android:id="@+id/allschedules"
+               android:layout_marginLeft="10dp"
+               />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textStyle="bold"
+                android:text="Submit"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:background="#d833f5"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/submitmarketview"
+                android:layout_marginRight="10dp"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

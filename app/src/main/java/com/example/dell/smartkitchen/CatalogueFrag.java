@@ -1,6 +1,7 @@
 package com.example.dell.smartkitchen;
 
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -40,6 +42,7 @@ public class CatalogueFrag extends Fragment {
     DatabaseReference dparent1 = FirebaseDatabase.getInstance().getReference();
     DatabaseReference cataloguelistfirebase = dparent1.child("CatalogueData").child("List");
 
+    Button btn;
 
 
 
@@ -57,7 +60,13 @@ public class CatalogueFrag extends Fragment {
         animation2= AnimationUtils.loadAnimation(getContext(),R.anim.reallranimate);
         cataloguenumber=(TextView)view.findViewById(R.id.cl2);
         clspinner=(Spinner)view.findViewById(R.id.clspinner);
-
+        btn=(Button)view.findViewById(R.id.marketvisit);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MarketCalendar()).addToBackStack(null).commit();
+            }
+        });
 
 
 
