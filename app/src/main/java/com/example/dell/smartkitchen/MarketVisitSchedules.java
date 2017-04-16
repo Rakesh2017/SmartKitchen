@@ -61,7 +61,7 @@ public class MarketVisitSchedules extends Fragment {
                 {
                     String marketname = dataSnapshot.child("VisitDay"+i).child("MarketName").getValue(String.class);
                     String date = dataSnapshot.child("VisitDay"+i).child("date").getValue(String.class);
-                    list.add(marketname+"  :  "+date);
+                    list.add(date+"    :    "+marketname);
                     adapter.notifyDataSetChanged();
 
                 }

@@ -5,6 +5,7 @@
     android:background="@drawable/side_nav_bar"
     android:gravity="bottom"
     android:orientation="vertical"
+    android:clickable="true"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <pl.droidsonroids.gif.GifTextView
