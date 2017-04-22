@@ -65,6 +65,12 @@ public class WaterSensorFrag extends Fragment {
         condition1.startAnimation(animation2);
         condition2.startAnimation(animation1);
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Historicaldata()).addToBackStack(null).commit();
+            }
+        });
 
 
         return view;

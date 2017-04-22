@@ -2,13 +2,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundwithoutsklogo"
     android:clickable="true"
     tools:context="com.example.dell.smartkitchen.Historicaldata">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Historical Data"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:background="#ef3434"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bg_login"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="70dp"
+        android:text="Smoke Sensor"
+        android:textSize="20dp"
+        android:id="@+id/historybtn1"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bg_main"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="70dp"
+        android:text="Water Sensor"
+        android:textSize="20dp"
+        android:id="@+id/historybtn2"
+        />
+    </LinearLayout>
 
 </FrameLayout>
