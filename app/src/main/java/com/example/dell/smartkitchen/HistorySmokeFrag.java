@@ -127,11 +127,19 @@ public void lasttwominutes(){
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0,5);
+                    String date1 = date.substring(0, 5);
                     String time = dataSnapshot1.child("time").getValue(String.class);
                     int value = dataSnapshot1.child("value").getValue(Integer.class);
-                    list.add("*  "+date1 + "   " + time + "   " + value);
-                    // Collections.reverse(list);
+                    String status=" ";
+                    if(value<250){
+                        status="No Leakage";
+                    }
+
+                    if(value>=250){
+                        status="Leakage!!!";
+                    }
+
+                    list.add("*  "+date1 + "     " + time + "       " + value +"      "+ status);
                 }
                 Collections.reverse(list);
                 adapter.notifyDataSetChanged();
@@ -155,11 +163,20 @@ public void lasttwominutes(){
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0,5);
+                    String date1 = date.substring(0, 5);
                     String time = dataSnapshot1.child("time").getValue(String.class);
                     int value = dataSnapshot1.child("value").getValue(Integer.class);
-                    list.add("*  "+date1 + "   " + time + "   " + value);
-                    // Collections.reverse(list);
+                    String status=" ";
+                    if(value<250){
+                        status="No Leakage";
+                    }
+
+                    if(value>=250){
+                        status="Leakage!!!";
+                    }
+
+                    list.add("*  "+date1 + "     " + time + "       " + value +"      "+ status);
+
                 }
 
                 Collections.reverse(list);
@@ -184,11 +201,19 @@ public void lasttwominutes(){
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0,5);
+                    String date1 = date.substring(0, 5);
                     String time = dataSnapshot1.child("time").getValue(String.class);
                     int value = dataSnapshot1.child("value").getValue(Integer.class);
-                    list.add("*  "+date1 + "   " + time + "   " + value);
-                    // Collections.reverse(list);
+                    String status=" ";
+                    if(value<250){
+                        status="No Leakage";
+                    }
+
+                    if(value>=250){
+                        status="Leakage!!!";
+                    }
+
+                    list.add("*  "+date1 + "     " + time + "       " + value +"      "+ status);
                 }
 
                 Collections.reverse(list);
