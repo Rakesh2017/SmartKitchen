@@ -58,18 +58,18 @@ public class HistorywaterFrag extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_historywater, container, false);
 
-        listview = (ListView) view.findViewById(R.id.listviewhistorysmoke);
+        listview = (ListView) view.findViewById(R.id.listviewhistorywater);
         button1 = (Button) view.findViewById(R.id.last2minuteswater);
         button2 = (Button) view.findViewById(R.id.last5minuteswater);
         button3 = (Button) view.findViewById(R.id.last1hourwater);
-        button4 = (Button) view.findViewById(R.id.selectdatewater);
+
         animation1 = AnimationUtils.loadAnimation(getContext(), R.anim.reallranimate);
         animation2 = AnimationUtils.loadAnimation(getContext(), R.anim.realrlanimate);
 
         button1.startAnimation(animation1);
         button3.startAnimation(animation1);
         button2.startAnimation(animation2);
-        button4.startAnimation(animation2);
+
 
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -99,14 +99,6 @@ public class HistorywaterFrag extends Fragment {
             }
         });
 
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Select Date", Toast.LENGTH_SHORT).show();
-                adapter.clear();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalendarData()).addToBackStack(null).commit();
-            }
-        });
 
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         Collections.reverse(list);

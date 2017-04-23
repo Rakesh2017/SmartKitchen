@@ -2,12 +2,14 @@ package com.example.dell.smartkitchen;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,11 +28,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -74,6 +80,8 @@ public class HomePage extends AppCompatActivity
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +99,10 @@ public class HomePage extends AppCompatActivity
         configuration=(ImageButton)findViewById(R.id.configurationid);
         analytics=(ImageButton)findViewById(R.id.analyticsgraphs);
         historical=(ImageButton)findViewById(R.id.historicaldata);
+
+
+
+
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,7 +284,7 @@ public class HomePage extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new UserProfile()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_calenadar) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CalendarData()).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new MarketVisitSchedules()).addToBackStack(null).commit();
 
 
         } else if (id == R.id.nav_messages) {

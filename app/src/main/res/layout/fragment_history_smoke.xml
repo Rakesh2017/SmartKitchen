@@ -61,22 +61,12 @@
                  android:layout_weight="1"
                  android:textColor="#000000"
                  android:text="last 1 hour"
-                 android:layout_marginRight="5dp"
+                 android:layout_marginRight="10dp"
                  android:layout_marginLeft="10dp"
                  android:id="@+id/last1hour"
                  />
 
-             <Button
-                 android:layout_width="match_parent"
-                 android:layout_height="35dp"
-                 android:background="@color/bg_login"
-                 android:layout_marginRight="10dp"
-                 android:layout_marginLeft="5dp"
-                 android:textColor="#000000"
-                 android:text="Select Date"
-                 android:layout_weight="1"
-                 android:id="@+id/selectdate"
-                 />
+
 
 
          </LinearLayout>

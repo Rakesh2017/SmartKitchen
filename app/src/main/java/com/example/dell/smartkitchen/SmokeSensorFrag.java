@@ -103,6 +103,12 @@ public class SmokeSensorFrag extends Fragment {
             }
         });
 
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new SmokeWork()).addToBackStack(null).commit();
+            }
+        });
 
 
 

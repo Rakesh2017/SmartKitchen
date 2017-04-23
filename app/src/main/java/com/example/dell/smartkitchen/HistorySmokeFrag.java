@@ -31,7 +31,7 @@ public class HistorySmokeFrag extends Fragment {
     Button button1;
     Button button2;
     Button button3;
-    Button button4;
+
 
     Animation animation1;
     Animation animation2;
@@ -66,14 +66,14 @@ public class HistorySmokeFrag extends Fragment {
         button1 = (Button) view.findViewById(R.id.last2minutes);
         button2 = (Button) view.findViewById(R.id.last5minutes);
         button3 = (Button) view.findViewById(R.id.last1hour);
-        button4 = (Button) view.findViewById(R.id.selectdate);
+
         animation1 = AnimationUtils.loadAnimation(getContext(), R.anim.reallranimate);
         animation2 = AnimationUtils.loadAnimation(getContext(), R.anim.realrlanimate);
 
         button1.startAnimation(animation1);
         button3.startAnimation(animation1);
         button2.startAnimation(animation2);
-        button4.startAnimation(animation2);
+
 
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -103,14 +103,6 @@ public class HistorySmokeFrag extends Fragment {
             }
         });
 
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Select Date", Toast.LENGTH_SHORT).show();
-                adapter.clear();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalendarData()).addToBackStack(null).commit();
-            }
-        });
 
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         Collections.reverse(list);

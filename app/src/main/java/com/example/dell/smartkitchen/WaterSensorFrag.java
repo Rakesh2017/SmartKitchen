@@ -72,6 +72,12 @@ public class WaterSensorFrag extends Fragment {
             }
         });
 
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new WaterWork()).addToBackStack(null).commit();
+            }
+        });
 
         return view;
     }
