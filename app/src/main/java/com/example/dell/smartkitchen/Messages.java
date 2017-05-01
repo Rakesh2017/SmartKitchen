@@ -72,13 +72,11 @@ public class Messages extends Fragment {
                 {
                     String name = dataSnapshot1.getValue(String.class);
                     list.add(name);
-                    adapter.notifyDataSetChanged();
+
                 }
 
+                adapter.notifyDataSetChanged();
 
-               // String name = dataSnapshot.child("messages").child("A").getValue(String.class);
-                //list.add(name);
-                //adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -1,6 +1,7 @@
 package com.example.dell.smartkitchen;
 
 
+import android.app.DownloadManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -47,6 +49,7 @@ public class HistorySmokeFrag extends Fragment {
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
     DatabaseReference dref = dparent.child("LpuHistoricalData");
     DatabaseReference dref1 = dref.child("Smoke");
+
 
 
     ListView listview;
@@ -123,15 +126,18 @@ public void lasttwominutes(){
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    int value=10;
-                    String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0, 5);
-                    String time = dataSnapshot1.child("time").getValue(String.class);
-                    try{
+                    int value=250;
+                    String date1="";
+                    String time="";
+                    try {
+                        String date = dataSnapshot1.child("date").getValue(String.class);
+                    date1 = date.substring(0, 5);
+                        time = dataSnapshot1.child("time").getValue(String.class);
+
                         value = dataSnapshot1.child("value").getValue(Integer.class);
                     }
                     catch(Exception e){
-                        Toast.makeText(getContext(), "sync...", Toast.LENGTH_SHORT).show();
+
                     }
 
                     String status=" ";
@@ -144,7 +150,7 @@ public void lasttwominutes(){
 
                     }
 
-                    list.add("*  "+date1 + "     " + time + "       " + value +"   "+ status);
+                    list.add("*  " + date1 + "     " + time + "       " + value + "   " + status);
                     status=" ";
                 }
                 Collections.reverse(list);
@@ -168,15 +174,18 @@ public void lasttwominutes(){
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    int value=0;
-                    String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0, 5);
-                    String time = dataSnapshot1.child("time").getValue(String.class);
+                    int value=250;
+                    String date1="";
+                    String time="";
                     try{
+                    String date = dataSnapshot1.child("date").getValue(String.class);
+                    date1 = date.substring(0, 5);
+                    time = dataSnapshot1.child("time").getValue(String.class);
+
                         value = dataSnapshot1.child("value").getValue(Integer.class);
                     }
                     catch(Exception e){
-                        Toast.makeText(getContext(), "sync...", Toast.LENGTH_SHORT).show();
+
                     }
 
                     String status=" ";
@@ -189,7 +198,7 @@ public void lasttwominutes(){
 
                     }
 
-                    list.add("*  "+date1 + "     " + time + "       " + value +"   "+ status);
+                    list.add("*  " + date1 + "     " + time + "       " + value + "   " + status);
                     status=" ";
 
                 }
@@ -215,15 +224,18 @@ public void lasttwominutes(){
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    int value=200;
-                    String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0, 5);
-                    String time = dataSnapshot1.child("time").getValue(String.class);
+                    int value=250;
+                    String date1="";
+                    String time="";
                     try{
+                    String date = dataSnapshot1.child("date").getValue(String.class);
+                    date1 = date.substring(0, 5);
+                    time = dataSnapshot1.child("time").getValue(String.class);
+
                         value = dataSnapshot1.child("value").getValue(Integer.class);
                     }
                     catch(Exception e){
-                        Toast.makeText(getContext(), "sync...", Toast.LENGTH_SHORT).show();
+
                     }
 
 

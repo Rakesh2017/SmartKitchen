@@ -11,6 +11,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import org.w3c.dom.Text;
 
 
@@ -39,6 +46,11 @@ public class SmokeSensorFrag extends Fragment {
     Animation animation1;
     Animation animation2;
     Animation animation3;
+
+    DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference dref = dparent.child("LpuHistoricalData");
+    DatabaseReference dref1 = dref.child("Smoke");
+  //  Query lastQuery = dref.child("Smoke").orderByKey().limitToLast(1);
 
 
 
@@ -114,5 +126,48 @@ public class SmokeSensorFrag extends Fragment {
 
         return view;
     }
+
+   public void onStart(){
+       super.onStart();
+
+       dref1.orderByKey().limitToLast(1).addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+               int value = 250;
+               for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                   try {
+                       value = dataSnapshot1.child("value").getValue(Integer.class);
+
+                   } catch (Exception e) {
+
+                   }
+               }
+                   realtimedata2.setText("" + value);
+                   if (value < 400) {
+                       alarm2.setText("OFF");
+                       fan2.setText("OFF");
+                       leak2.setText("NO!");
+                       condition2.setText("Normal");
+                   } else if (value >= 400 && value <= 600) {
+                       alarm2.setText("ON");
+                       fan2.setText("ON");
+                       leak2.setText("YES!!!");
+                       condition2.setText("Severe!!");
+                   } else if (value > 600) {
+                       condition2.setText("Critical");
+                   }
+
+
+               }
+
+               @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });
+
+   }
+
+
 
 }
