@@ -2,11 +2,17 @@ package com.example.dell.smartkitchen;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 
 import android.graphics.Color;
@@ -18,6 +24,7 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Random;
 
 
 /**
@@ -25,6 +32,14 @@ import com.jjoe64.graphview.series.LineGraphSeries;
  */
 public class AnalyticsData extends Fragment {
 
+    private final Handler mHandler = new Handler();
+    private Runnable mTimer;
+    private double graphLastXValue = 5d;
+    private LineGraphSeries<DataPoint> mSeries;
+
+    DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference def=dparent.child("LpuHistoricalData");
+    int data;
 
     public AnalyticsData() {
         // Required empty public constructor
@@ -42,21 +57,61 @@ public class AnalyticsData extends Fragment {
         return view;
     }
 
-    public void initGraph(GraphView graph) {
-        // first series is a line
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        series.setDrawBackground(true);
-        series.setAnimated(true);
-        series.setDrawDataPoints(true);
-        series.setTitle("People");
+   /* public void onStart(){
+        onStart();
 
-        graph.addSeries(series);
+        def.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                 data = dataSnapshot.child("Smoke").child("value").getValue(Integer.class);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
+
+    public void initGraph(GraphView graph) {
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(4);
+
+        graph.getGridLabelRenderer().setLabelVerticalWidth(100);
+
+        // first mSeries is a line
+        mSeries = new LineGraphSeries<>();
+        mSeries.setDrawDataPoints(true);
+        mSeries.setDrawBackground(true);
+        graph.addSeries(mSeries);
+    }
+
+    public void onResume() {
+        super.onResume();
+        mTimer = new Runnable() {
+            @Override
+            public void run() {
+                graphLastXValue += 0.25d;
+                mSeries.appendData(new DataPoint(graphLastXValue, getRandom()), true, 22);
+                mHandler.postDelayed(this, 330);
+            }
+        };
+        mHandler.postDelayed(mTimer, 1500);
+    }
+
+    public void onPause() {
+        super.onPause();
+        mHandler.removeCallbacks(mTimer);
+    }
+
+    double mLastRandom = 2;
+    Random mRand = new Random();
+    private double getRandom() {
+        return mLastRandom += mRand.nextDouble()*0.5 - 0.25;
     }
 
 }

@@ -1,8 +1,13 @@
 package com.example.dell.smartkitchen;
 
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,20 +123,29 @@ public void lasttwominutes(){
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    int value=10;
                     String date = dataSnapshot1.child("date").getValue(String.class);
                     String date1 = date.substring(0, 5);
                     String time = dataSnapshot1.child("time").getValue(String.class);
-                    int value = dataSnapshot1.child("value").getValue(Integer.class);
+                    try{
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+                    }
+                    catch(Exception e){
+                        Toast.makeText(getContext(), "sync...", Toast.LENGTH_SHORT).show();
+                    }
+
                     String status=" ";
-                    if(value<250){
+                    if(value<400){
                         status="No Leakage";
                     }
 
-                    if(value>=250){
+                    if(value>=400){
                         status="Leakage!!!";
+
                     }
 
-                    list.add("*  "+date1 + "     " + time + "       " + value +"      "+ status);
+                    list.add("*  "+date1 + "     " + time + "       " + value +"   "+ status);
+                    status=" ";
                 }
                 Collections.reverse(list);
                 adapter.notifyDataSetChanged();
@@ -154,20 +168,29 @@ public void lasttwominutes(){
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    int value=0;
                     String date = dataSnapshot1.child("date").getValue(String.class);
                     String date1 = date.substring(0, 5);
                     String time = dataSnapshot1.child("time").getValue(String.class);
-                    int value = dataSnapshot1.child("value").getValue(Integer.class);
+                    try{
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+                    }
+                    catch(Exception e){
+                        Toast.makeText(getContext(), "sync...", Toast.LENGTH_SHORT).show();
+                    }
+
                     String status=" ";
-                    if(value<250){
+                    if(value<400){
                         status="No Leakage";
                     }
 
-                    if(value>=250){
+                    if(value>=400){
                         status="Leakage!!!";
+
                     }
 
-                    list.add("*  "+date1 + "     " + time + "       " + value +"      "+ status);
+                    list.add("*  "+date1 + "     " + time + "       " + value +"   "+ status);
+                    status=" ";
 
                 }
 
@@ -192,20 +215,32 @@ public void lasttwominutes(){
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    int value=200;
                     String date = dataSnapshot1.child("date").getValue(String.class);
                     String date1 = date.substring(0, 5);
                     String time = dataSnapshot1.child("time").getValue(String.class);
-                    int value = dataSnapshot1.child("value").getValue(Integer.class);
+                    try{
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+                    }
+                    catch(Exception e){
+                        Toast.makeText(getContext(), "sync...", Toast.LENGTH_SHORT).show();
+                    }
+
+
                     String status=" ";
-                    if(value<250){
+
+
+                    if(value<400){
                         status="No Leakage";
                     }
 
-                    if(value>=250){
+                    if(value>=400){
                         status="Leakage!!!";
+
                     }
 
-                    list.add("*  "+date1 + "     " + time + "       " + value +"      "+ status);
+                    list.add("*  " + date1 + "     " + time + "       " + value + "   " + status);
+                    status=" ";
                 }
 
                 Collections.reverse(list);

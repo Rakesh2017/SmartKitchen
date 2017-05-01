@@ -19,7 +19,7 @@ public class RealTimeData extends Fragment {
     Button btn1;
     Button btn2;
     Button btn3;
-    Button btn4;
+
     Animation animation1;
     Animation animation2;
 
@@ -38,14 +38,14 @@ public class RealTimeData extends Fragment {
         btn1=(Button)view.findViewById(R.id.realbtn1);
         btn2=(Button)view.findViewById(R.id.realbtn2);
         btn3=(Button)view.findViewById(R.id.realbtn3);
-        btn4=(Button)view.findViewById(R.id.realbtn4);
+
         animation1= AnimationUtils.loadAnimation(getContext(),R.anim.reallranimate);
         animation2= AnimationUtils.loadAnimation(getContext(),R.anim.realrlanimate);
 
         btn1.startAnimation(animation2);
         btn2.startAnimation(animation1);
         btn3.startAnimation(animation2);
-        btn4.startAnimation(animation1);
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
