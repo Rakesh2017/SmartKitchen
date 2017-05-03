@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.awareness.snapshot.internal.Snapshot;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,14 +33,16 @@ import java.util.Random;
  */
 public class AnalyticsData extends Fragment {
 
-    private final Handler mHandler = new Handler();
-    private Runnable mTimer;
-    private double graphLastXValue = 5d;
-    private LineGraphSeries<DataPoint> mSeries;
+
 
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference def=dparent.child("LpuHistoricalData");
+    DatabaseReference dref = dparent.child("LpuHistoricalData");
+    DatabaseReference dref1 = dref.child("Smoke");
+
     int data;
+    int x1=0,y1=0;
+
+    GraphView graph;
 
     public AnalyticsData() {
         // Required empty public constructor
@@ -51,67 +54,63 @@ public class AnalyticsData extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_analytics_data, container, false);
-        GraphView graph = (GraphView) view.findViewById(R.id.graph);
-        initGraph(graph);
+        graph = (GraphView) view.findViewById(R.id.graph);
+
+
+
+
 
         return view;
     }
+public void onStart(){
+    super.onStart();
 
-   /* public void onStart(){
-        onStart();
+    dref1.limitToLast(10).addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
 
-        def.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    String x="";
+                try{
+                    x = dataSnapshot1.child("time").getValue(String.class);
+                    x1=Integer.parseInt(x);
+                    y1= dataSnapshot1.child("value").getValue(Integer.class);
 
-                 data = dataSnapshot.child("Smoke").child("value").getValue(Integer.class);
+
+                }
+                catch (Exception e){
+
+                }
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                        new DataPoint(x1, y1),
+                        new DataPoint(x1+1, y1+1),
+                        new DataPoint(x1+1, y1+1),
+                        new DataPoint(x1+1, y1+1),
+                        new DataPoint(x1+1, y1+1),
+                        new DataPoint(x1+1, y1+1),
+
+
+                });
+                graph.addSeries(series);
+                graph.getGridLabelRenderer().setNumHorizontalLabels(2);
+
+                graph.getViewport().setMinY(0);
+                graph.getViewport().setMaxY(700);
+                graph.getViewport().setXAxisBoundsManual(true);
+
+
+                graph.getGridLabelRenderer().setHumanRounding(false);
 
             }
+        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-    }*/
+        }
+    });
 
+}
 
-    public void initGraph(GraphView graph) {
-        graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(4);
-
-        graph.getGridLabelRenderer().setLabelVerticalWidth(100);
-
-        // first mSeries is a line
-        mSeries = new LineGraphSeries<>();
-        mSeries.setDrawDataPoints(true);
-        mSeries.setDrawBackground(true);
-        graph.addSeries(mSeries);
-    }
-
-    public void onResume() {
-        super.onResume();
-        mTimer = new Runnable() {
-            @Override
-            public void run() {
-                graphLastXValue += 0.25d;
-                mSeries.appendData(new DataPoint(graphLastXValue, getRandom()), true, 22);
-                mHandler.postDelayed(this, 330);
-            }
-        };
-        mHandler.postDelayed(mTimer, 1500);
-    }
-
-    public void onPause() {
-        super.onPause();
-        mHandler.removeCallbacks(mTimer);
-    }
-
-    double mLastRandom = 2;
-    Random mRand = new Random();
-    private double getRandom() {
-        return mLastRandom += mRand.nextDouble()*0.5 - 0.25;
-    }
 
 }

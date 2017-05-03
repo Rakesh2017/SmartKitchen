@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -53,7 +54,7 @@ public class MarketVisitSchedules extends Fragment {
     public void onStart(){
         super.onStart();
 
-        dref.addValueEventListener(new ValueEventListener() {
+        dref.limitToLast(16).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -61,11 +62,12 @@ public class MarketVisitSchedules extends Fragment {
                 {
                     String marketname = dataSnapshot.child("VisitDay"+i).child("MarketName").getValue(String.class);
                     String date = dataSnapshot.child("VisitDay"+i).child("date").getValue(String.class);
-                    list.add(date+"    :    "+marketname);
-                    adapter.notifyDataSetChanged();
+                    list.add(date + "    :    " + marketname);
+
 
                 }
-
+                Collections.reverse(list);
+                adapter.notifyDataSetChanged();
             }
 
             @Override

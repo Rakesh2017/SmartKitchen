@@ -156,6 +156,13 @@ public class SmokeSensorFrag extends Fragment {
                    } else if (value > 600) {
                        condition2.setText("Critical");
                    }
+                     else if(value==0){
+                       status2.setText("not working");
+                       alarm2.setText("ON");
+                       fan2.setText("ON");
+                       leak2.setText("YES!!!");
+                       condition2.setText("Severe!!");
+                    }
 
 
                }

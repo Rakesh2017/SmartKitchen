@@ -11,6 +11,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +34,10 @@ public class WaterSensorFrag extends Fragment {
 
     Animation animation1;
     Animation animation2;
+
+    DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference dref = dparent.child("LpuHistoricalData");
+    DatabaseReference dref1 = dref.child("Water");
 
     public WaterSensorFrag() {
         // Required empty public constructor
@@ -81,5 +91,47 @@ public class WaterSensorFrag extends Fragment {
 
         return view;
     }
+
+    public void onStart(){
+        super.onStart();
+
+        dref1.orderByKey().limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int value = 40;
+                for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    try {
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+
+                    } catch (Exception e) {
+
+                    }
+                }
+                realtimedata2.setText("" + value);
+                if (value < 100) {
+                    condition2.setText("Normal");
+                } else if (value >= 100 && value <= 130) {
+
+                    condition2.setText("Severe!!");
+                } else if (value > 130) {
+                    condition2.setText("Critical");
+                }
+                else if(value==0){
+                    status2.setText("not working");
+                    condition2.setText("Severe!!");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
 
 }

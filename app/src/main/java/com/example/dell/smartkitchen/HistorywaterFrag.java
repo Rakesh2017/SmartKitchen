@@ -118,11 +118,20 @@ public class HistorywaterFrag extends Fragment {
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0, 5);
-                    String time = dataSnapshot1.child("time").getValue(String.class);
-                    int value = dataSnapshot1.child("value").getValue(Integer.class);
-                    String status=" ";
+                    String date="";
+                    String date1="";
+                    String time="";
+                    int value=40;
+                    try{
+                        date = dataSnapshot1.child("date").getValue(String.class);
+                        date1 = date.substring(0, 5);
+                        time = dataSnapshot1.child("time").getValue(String.class);
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+                    }
+                    catch(Exception e){
+
+                    }
+                   String status=" ";
                     if(value<100){
                         status="No Overflow";
                     }
@@ -154,11 +163,20 @@ public class HistorywaterFrag extends Fragment {
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0, 5);
-                    String time = dataSnapshot1.child("time").getValue(String.class);
-                    int value = dataSnapshot1.child("value").getValue(Integer.class);
-                    String status=" ";
+                    String date="";
+                    String date1="";
+                    String time="";
+                    int value=40;
+                    try{
+                        date = dataSnapshot1.child("date").getValue(String.class);
+                        date1 = date.substring(0, 5);
+                        time = dataSnapshot1.child("time").getValue(String.class);
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+                    }
+                    catch(Exception e){
+
+                    }
+                   String status=" ";
                     if(value<100){
                         status="No Overflow";
                     }
@@ -192,10 +210,19 @@ public class HistorywaterFrag extends Fragment {
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    String date = dataSnapshot1.child("date").getValue(String.class);
-                    String date1 = date.substring(0, 5);
-                    String time = dataSnapshot1.child("time").getValue(String.class);
-                    int value = dataSnapshot1.child("value").getValue(Integer.class);
+                    String date="";
+                    String date1="";
+                    String time="";
+                    int value=40;
+                    try{
+                        date = dataSnapshot1.child("date").getValue(String.class);
+                        date1 = date.substring(0, 5);
+                        time = dataSnapshot1.child("time").getValue(String.class);
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
+                    }
+                    catch(Exception e){
+
+                    }
                     String status=" ";
                     if(value<100){
                         status="No Overflow";

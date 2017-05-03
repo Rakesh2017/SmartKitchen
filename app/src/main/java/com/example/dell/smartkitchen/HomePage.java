@@ -39,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -215,16 +216,17 @@ public class HomePage extends AppCompatActivity
         });
 
 
-        dref1.addValueEventListener(new ValueEventListener() {
+        dref1.limitToLast(8).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
                 for(com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
                     String name = dataSnapshot1.getValue(String.class);
                     list.add(name);
-                    adapter.notifyDataSetChanged();
-                }
 
+                }
+                Collections.reverse(list);
+                adapter.notifyDataSetChanged();
 
                 // String name = dataSnapshot.child("messages").child("A").getValue(String.class);
                 //list.add(name);
