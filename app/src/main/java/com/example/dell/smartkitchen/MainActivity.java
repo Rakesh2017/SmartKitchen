@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnSignup = (Button) findViewById(R.id.btn_signup);
         btnLogin = (Button) findViewById(R.id.btn_login);
-        btnReset = (Button) findViewById(R.id.btn_reset_password);
+       // btnReset = (Button) findViewById(R.id.btn_reset_password);
 
         //register
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         inputEmail1 = (EditText) findViewById(R.id.email1);
         inputPassword1 = (EditText) findViewById(R.id.password1);
         progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
-        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
+      //  btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
         //shared Preferences data
         String emailname=sharedPreferences.getString("A","");

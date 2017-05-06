@@ -2,8 +2,17 @@ package com.example.dell.smartkitchen;
 
 
 import android.app.FragmentManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +55,11 @@ public class CatalogueFrag extends Fragment {
     DatabaseReference dparent2 = FirebaseDatabase.getInstance().getReference();
     DatabaseReference cataloguesensordata = dparent2.child("CatalogueData").child("List");
 
+    DatabaseReference dparent3 = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference dref3 = dparent3.child("LpuHistoricalData");
+    DatabaseReference dref4 = dref3.child("Ultra");
+    int value=0;
+
 
     Button btn;
     TextView productname;
@@ -54,7 +68,7 @@ public class CatalogueFrag extends Fragment {
     String name;
 
     int pos;
-    int box1sensordata;
+    int box1sensordata=0;
 
 
     public CatalogueFrag() {
@@ -86,31 +100,10 @@ public class CatalogueFrag extends Fragment {
         clspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                pos=position;
+                pos = position;
                 disp();
 
-                int sensordata = box1sensordata;
-                if(sensordata>0 && sensordata <=10)
-                {
-                    quantleft.setText("80%");
-                    daysleft.setText("25 days");
-                }
 
-                if(sensordata>10 && sensordata <=20)
-                {
-                    quantleft.setText("50%");
-                    daysleft.setText("15 days");
-                }
-                if(sensordata>20 && sensordata <=30)
-                {
-                    quantleft.setText("20%");
-                    daysleft.setText("10 days");
-                }
-                if(sensordata>30 && sensordata <=40)
-                {
-                    quantleft.setText("7%");
-                    daysleft.setText("2 days");
-                }
 
             }
 
@@ -127,6 +120,45 @@ public class CatalogueFrag extends Fragment {
 
     public void onStart() {
         super.onStart();
+
+        dref4.orderByKey().limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    try {
+                        box1sensordata = dataSnapshot1.child("value").getValue(Integer.class);
+                        Toast.makeText(getContext(), box1sensordata, Toast.LENGTH_SHORT).show();
+                        int sensordata = box1sensordata;
+                        if (sensordata > 0 && sensordata <= 3) {
+                            quantleft.setText("80%");
+                            daysleft.setText("25 days");
+                        }
+
+                        if (sensordata > 3 && sensordata <= 8) {
+                            quantleft.setText("50%");
+                            daysleft.setText("15 days");
+                        }
+                        if (sensordata > 8 && sensordata <= 12) {
+                            quantleft.setText("20%");
+                            daysleft.setText("10 days");
+                        }
+                        if (sensordata > 12 && sensordata <= 15) {
+                            quantleft.setText("7%");
+                            daysleft.setText("2 days");
+                            DispAlarm();
+                        }
+
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
@@ -170,31 +202,24 @@ public class CatalogueFrag extends Fragment {
 
 
     }
-    public void disp(){
+    public void disp() {
         super.onStart();
         cataloguesensordata.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(pos==0){
+                if (pos == 0) {
                     name = dataSnapshot.child("Box1").child("ProductName").getValue(String.class);
                     productname.setText(name);
-                    box1sensordata  = dataSnapshot.child("Box1").child("SensorValue").getValue(Integer.class);
+                    //   box1sensordata = dataSnapshot.child("Box1").child("SensorValue").getValue(Integer.class);
 
-
-
-                }
-                else if(pos>=1){
-                    int poss = pos+1;
-                    name = dataSnapshot.child("Box"+poss).child("ProductName").getValue(String.class);
+                } else if (pos >= 1) {
+                    int poss = pos + 1;
+                    name = dataSnapshot.child("Box" + poss).child("ProductName").getValue(String.class);
                     productname.setText(name);
-                    Toast.makeText(getContext(), "These are just dummy values(incorrect), only 1st box is in working as per commands...", Toast.LENGTH_LONG).show();
-                    box1sensordata  = dataSnapshot.child("Box"+poss).child("SensorValue").getValue(Integer.class);
+                    Toast.makeText(getContext(), "Only 1 Box is installed!!, Showing Sensors values of 1st Box", Toast.LENGTH_LONG).show();
 
                 }
-
-
-
 
 
             }
@@ -206,12 +231,47 @@ public class CatalogueFrag extends Fragment {
         });
 
 
-
-
-
     }
 
 
+    public void DispAlarm(){
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getContext(), notification);
+        r.play();
 
+        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        v.vibrate(1000);
+
+
+
+        //notification page
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(getContext());
+
+//Create the intent that’ll fire when the user taps the notification//
+
+        Intent intent = new Intent(getContext(), AlertWater.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
+
+        mBuilder.setContentIntent(pendingIntent);
+
+        mBuilder.setSmallIcon(R.drawable.gasleakagenoti);
+        mBuilder.setContentTitle("Sugar Content critically low");
+        mBuilder.setContentText("Do not forget to buy sugar on your next market visit");
+
+        NotificationManager mNotificationManager =
+
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mNotificationManager.notify(001, mBuilder.build());
+
+    }
 
 }
+
+
+
+
+
+

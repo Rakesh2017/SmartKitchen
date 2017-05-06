@@ -189,17 +189,11 @@
              android:layout_weight="1"
              android:background="#ae1db3"
              android:id="@+id/marketvisit"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
              />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Configure"
-            android:textColor="#000000"
-            android:layout_weight="1"
-            android:background="#2f8311"
-            android:layout_marginLeft="10dp"
-            />
+
 
                 </LinearLayout>
 

@@ -1,14 +1,20 @@
 package com.example.dell.smartkitchen;
 
 import android.app.FragmentManager;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -38,8 +44,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,6 +86,9 @@ public class HomePage extends AppCompatActivity
 
     DatabaseReference dparent3 = FirebaseDatabase.getInstance().getReference();
     DatabaseReference dsensorchild=dparent3.child("sensorstatus");
+
+    DatabaseReference dparent4 = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference dref4=dparent4.child("MarketVisitData");
 
 
 
@@ -186,6 +197,44 @@ public class HomePage extends AppCompatActivity
 
     protected void onStart(){
         super.onStart();
+        dref4.limitToLast(16).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (long i = dataSnapshot.getChildrenCount(); i >= 1; i--) {
+                    String marketname = dataSnapshot.child("VisitDay" + i).child("MarketName").getValue(String.class);
+                    String date = dataSnapshot.child("VisitDay" + i).child("date").getValue(String.class);
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    Date d1 = new Date();
+                    String todaydate = df.format(d1);
+
+
+                    if (todaydate.equals(date)) {
+                        DispAlarm();
+
+
+                    }
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
 
                   refname.addValueEventListener(new ValueEventListener() {
                       @Override
@@ -326,4 +375,44 @@ public class HomePage extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+    public void DispAlarm(){
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
+
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        v.vibrate(1000);
+
+
+
+        //notification page
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(getApplicationContext());
+
+//Create the intent that’ll fire when the user taps the notification//
+
+        /*Intent intent = new Intent(getContext(), AlertWater.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
+
+        mBuilder.setContentIntent(pendingIntent);*/
+
+
+
+        mBuilder.setSmallIcon(R.drawable.gasleakagenoti);
+        mBuilder.setContentTitle("Market Schedule");
+        mBuilder.setContentText("Check application to see List");
+
+        NotificationManager mNotificationManager =
+
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mNotificationManager.notify(001, mBuilder.build());
+
+    }
+
+
 }

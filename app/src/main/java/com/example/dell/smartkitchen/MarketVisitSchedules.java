@@ -76,13 +76,18 @@ public class MarketVisitSchedules extends Fragment {
                     String date = dataSnapshot.child("VisitDay" + i).child("date").getValue(String.class);
                     list.add(date + "    :    " + marketname);
 
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                     Date d1 = new Date();
                     String todaydate = df.format(d1);
-                    Toast.makeText(getContext(), todaydate, Toast.LENGTH_SHORT).show();
+
 
                     if (todaydate.equals(date)) {
-                        DispAlarm();
+                        int k=1;
+                        if (k==1){
+                            DispAlarm();
+                            k=k+1;
+                        }
+
 
 
                     }
