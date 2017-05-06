@@ -7,9 +7,139 @@
     tools:context="com.example.dell.smartkitchen.ConfigurationData">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="70dp"
+        android:text="System Configuration"
+        android:background="#e42525"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="90dp"
+        android:orientation="horizontal">
+
+
+
+        <TextView
+            android:layout_width="290dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="Number of boxes deployed  : "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="#b4842b"
+            android:textColor="#000000"
+            android:id="@+id/sc2"
+            />
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="#b4842b"
+            android:id="@+id/sc1"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="'?'" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="170dp"
+        >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:text="List"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+
+        <Spinner
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/scspinner"
+            android:scrollbars="vertical"
+
+            ></Spinner>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sensors used"
+        android:textSize="30dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="30dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="UltraSonic Sensor"
+        android:layout_marginTop="320dp"
+        android:gravity="center"
+        android:background="@color/bg_login"
+        android:textSize="25dp"
+        android:textColor="#cabb1b"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="MQ-2 Smoke Sensor"
+        android:layout_marginTop="400dp"
+        android:gravity="center"
+        android:background="@color/bg_login"
+        android:textSize="25dp"
+        android:textColor="#cabb1b"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Water Sensor"
+        android:layout_marginTop="480dp"
+        android:gravity="center"
+        android:background="@color/bg_login"
+        android:textSize="25dp"
+        android:textColor="#cabb1b"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+
+
+
 
 </FrameLayout>

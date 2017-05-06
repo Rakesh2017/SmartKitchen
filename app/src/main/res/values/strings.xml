@@ -45,4 +45,6 @@
     <string name="title_activity_user_location">Map</string>
 
     <string name="title_activity_alert_smoke">AlertSmoke</string>
+
+    <string name="title_activity_alert_water">AlertWater</string>
 </resources>

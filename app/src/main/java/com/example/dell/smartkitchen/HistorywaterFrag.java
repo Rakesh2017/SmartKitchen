@@ -41,7 +41,7 @@ public class HistorywaterFrag extends Fragment {
 
     DatabaseReference dparent = FirebaseDatabase.getInstance().getReference();
     DatabaseReference dref = dparent.child("LpuHistoricalData");
-    DatabaseReference dref1 = dref.child("water");
+    DatabaseReference dref1 = dref.child("Water");
     ListView listview;
     ArrayList<String> list=new ArrayList<>();
 

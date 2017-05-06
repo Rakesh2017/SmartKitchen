@@ -1,8 +1,18 @@
 package com.example.dell.smartkitchen;
 
 
+import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -149,11 +159,13 @@ public class SmokeSensorFrag extends Fragment {
                        leak2.setText("NO!");
                        condition2.setText("Normal");
                    } else if (value >= 400 && value <= 600) {
+                       DispAlarm();
                        alarm2.setText("ON");
                        fan2.setText("ON");
                        leak2.setText("YES!!!");
                        condition2.setText("Severe!!");
                    } else if (value > 600) {
+                       DispAlarm();
                        condition2.setText("Critical");
                    }
                      else if(value==0){
@@ -174,6 +186,42 @@ public class SmokeSensorFrag extends Fragment {
        });
 
    }
+
+    public void DispAlarm(){
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getContext(), notification);
+        r.play();
+
+        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        v.vibrate(1000);
+
+
+
+
+
+        //notification page
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(getContext());
+
+//Create the intent that’ll fire when the user taps the notification//
+
+        Intent intent = new Intent(getContext(), AlertSmoke.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
+
+        mBuilder.setContentIntent(pendingIntent);
+
+        mBuilder.setSmallIcon(R.drawable.gasleakagenoti);
+        mBuilder.setContentTitle("Gas Leakage Alert!!!");
+        mBuilder.setContentText("Exaust fan and alarm is turn on...");
+
+        NotificationManager mNotificationManager =
+
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mNotificationManager.notify(001, mBuilder.build());
+
+    }
 
 
 

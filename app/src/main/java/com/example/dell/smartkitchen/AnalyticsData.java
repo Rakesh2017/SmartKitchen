@@ -60,6 +60,7 @@ public class AnalyticsData extends Fragment {
 
 
 
+
         return view;
     }
 public void onStart(){
@@ -81,27 +82,30 @@ public void onStart(){
                 catch (Exception e){
 
                 }
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                        new DataPoint(x1, y1),
-                        new DataPoint(x1+1, y1+1),
-                        new DataPoint(x1+1, y1+1),
-                        new DataPoint(x1+1, y1+1),
-                        new DataPoint(x1+1, y1+1),
-                        new DataPoint(x1+1, y1+1),
 
-
-                });
-                graph.addSeries(series);
-                graph.getGridLabelRenderer().setNumHorizontalLabels(2);
-
-                graph.getViewport().setMinY(0);
-                graph.getViewport().setMaxY(700);
-                graph.getViewport().setXAxisBoundsManual(true);
-
-
-                graph.getGridLabelRenderer().setHumanRounding(false);
 
             }
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                    new DataPoint(x1, y1),
+                    new DataPoint(x1+1, y1+1),
+                    new DataPoint(x1+1, y1+1),
+                    new DataPoint(x1+1, y1+1),
+                    new DataPoint(x1+1, y1+1),
+                    new DataPoint(x1+1, y1+1),
+
+
+            });
+            graph.addSeries(series);
+            graph.getGridLabelRenderer().setNumHorizontalLabels(2);
+            graph.getGridLabelRenderer().setNumVerticalLabels(3);
+
+            graph.getViewport().setMinY(0);
+            graph.getViewport().setMaxY(5);
+            graph.getViewport().setXAxisBoundsManual(true);
+
+
+            graph.getGridLabelRenderer().setHumanRounding(false);
+
         }
 
         @Override

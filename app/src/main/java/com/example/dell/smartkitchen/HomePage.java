@@ -103,8 +103,6 @@ public class HomePage extends AppCompatActivity
 
 
 
-
-
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -312,6 +310,9 @@ public class HomePage extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);        }
         else if (id == R.id.nav_logout) {
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
 
         } else if (id == R.id.nav_contact) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Contactus()).addToBackStack(null).commit();
