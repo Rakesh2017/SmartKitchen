@@ -102,10 +102,7 @@ public class HistorywaterFrag extends Fragment {
 
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, list);
         Collections.reverse(list);
-
         listview.setAdapter(adapter);
-
-
 
         return view;
     }
