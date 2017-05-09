@@ -110,11 +110,18 @@ public class MarketVisitSchedules extends Fragment {
     public void DispAlarm(){
         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Ringtone r = RingtoneManager.getRingtone(getContext(), notification);
-        r.play();
 
-        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 500 milliseconds
-        v.vibrate(1000);
+        try{
+            r.play();
+
+            Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(1000);
+        }
+        catch (Exception e){
+
+        }
+
 
 
 

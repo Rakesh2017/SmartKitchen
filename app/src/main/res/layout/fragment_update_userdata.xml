@@ -41,31 +41,20 @@
         android:text="update profile pic"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:layout_gravity="center"
         android:background="#ec1e25"
         />
 
-    <Button
-        android:id="@+id/uploadbuttoncamera"
-        android:layout_width="330dp"
-        android:layout_height="40dp"
-        android:text="capture image and uplaod"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:background="#ec1e25"
-        />
+
 
 
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         >
 
 

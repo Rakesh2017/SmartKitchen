@@ -41,7 +41,7 @@ public class UpdateUserdata extends Fragment {
     private StorageReference mStorage1;
     private ProgressDialog mProgress;
 
-    private Button mUploadbtn;
+   // private Button mUploadbtn;
     private final static int CAMERA_REQUEST_CODE = 1;
 
 
@@ -66,7 +66,7 @@ public class UpdateUserdata extends Fragment {
         mStorage = FirebaseStorage.getInstance().getReference();
         mStorage1 = FirebaseStorage.getInstance().getReference();
         mSelctImage = (Button) view.findViewById(R.id.uploadbutton);
-        mUploadbtn = (Button) view.findViewById(R.id.uploadbuttoncamera);
+       // mUploadbtn = (Button) view.findViewById(R.id.uploadbuttoncamera);
         mProgress = new ProgressDialog(getContext());
 
 
@@ -87,7 +87,7 @@ public class UpdateUserdata extends Fragment {
             }
         });
 
-        mUploadbtn.setOnClickListener(new View.OnClickListener() {
+       /* mUploadbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -97,7 +97,7 @@ public class UpdateUserdata extends Fragment {
             }
 
             });
-
+               */
 
 
 

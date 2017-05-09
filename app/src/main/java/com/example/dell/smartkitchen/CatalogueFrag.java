@@ -69,6 +69,8 @@ public class CatalogueFrag extends Fragment {
 
     int pos;
     int box1sensordata=0;
+    int count=1;
+
 
 
     public CatalogueFrag() {
@@ -124,31 +126,39 @@ public class CatalogueFrag extends Fragment {
         dref4.orderByKey().limitToLast(1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int value=2;
+
                 for (com.google.firebase.database.DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     try {
-                        box1sensordata = dataSnapshot1.child("value").getValue(Integer.class);
-                        Toast.makeText(getContext(), box1sensordata, Toast.LENGTH_SHORT).show();
-                        int sensordata = box1sensordata;
-                        if (sensordata > 0 && sensordata <= 3) {
-                            quantleft.setText("80%");
-                            daysleft.setText("25 days");
-                        }
+                        value = dataSnapshot1.child("value").getValue(Integer.class);
 
-                        if (sensordata > 3 && sensordata <= 8) {
-                            quantleft.setText("50%");
-                            daysleft.setText("15 days");
-                        }
-                        if (sensordata > 8 && sensordata <= 12) {
-                            quantleft.setText("20%");
-                            daysleft.setText("10 days");
-                        }
-                        if (sensordata > 12 && sensordata <= 15) {
-                            quantleft.setText("7%");
-                            daysleft.setText("2 days");
-                            DispAlarm();
-                        }
 
                     } catch (Exception e) {
+
+                    }
+
+                  //  Toast.makeText(getContext(), " "+value, Toast.LENGTH_SHORT).show();
+                    int sensordata = value;
+                    if (sensordata > 0 && sensordata <= 3) {
+                        quantleft.setText("80%");
+                        daysleft.setText("25 days");
+                    }
+
+                    if (sensordata > 3 && sensordata <= 5) {
+                        quantleft.setText("50%");
+                        daysleft.setText("15 days");
+                    }
+                    if (sensordata > 5 && sensordata <= 8) {
+                        quantleft.setText("20%");
+                        daysleft.setText("10 days");
+                    }
+                    if (sensordata > 8 && sensordata <= 15) {
+                        quantleft.setText("7%");
+                        daysleft.setText("2 days");
+                        if(count==1){
+                            DispAlarm();
+                            count++;
+                        }
 
                     }
                 }
@@ -237,11 +247,19 @@ public class CatalogueFrag extends Fragment {
     public void DispAlarm(){
         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Ringtone r = RingtoneManager.getRingtone(getContext(), notification);
-        r.play();
+        try{
+            r.play();
+            Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(1000);
+        }
+        catch (Exception e)
+        {
 
-        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 500 milliseconds
-        v.vibrate(1000);
+        }
+
+
+
 
 
 
