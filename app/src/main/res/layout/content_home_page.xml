@@ -197,7 +197,7 @@
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  Analytics \n  Graphs"
+        android:text="  Automation"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:layout_marginTop="470dp"

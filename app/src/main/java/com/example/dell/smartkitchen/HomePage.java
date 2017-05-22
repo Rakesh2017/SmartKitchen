@@ -68,7 +68,7 @@ public class HomePage extends AppCompatActivity
     TextView sensorscondition;
     ImageButton configuration;
     ImageButton historical;
-    ImageButton analytics;
+    ImageButton automation;
 
     Animation circlesanimation;
     TextView userprofilenamehomepage;
@@ -109,7 +109,7 @@ public class HomePage extends AppCompatActivity
         img4=(ImageView)findViewById(R.id.img4);
         imageButton=(ImageButton)findViewById(R.id.imghomepage1);
         configuration=(ImageButton)findViewById(R.id.configurationid);
-        analytics=(ImageButton)findViewById(R.id.analyticsgraphs);
+        automation=(ImageButton)findViewById(R.id.analyticsgraphs);
         historical=(ImageButton)findViewById(R.id.historicaldata);
 
 
@@ -138,10 +138,10 @@ public class HomePage extends AppCompatActivity
             }
         });
 
-        analytics.setOnClickListener(new View.OnClickListener() {
+        automation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AnalyticsData()).addToBackStack(null).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Automation()).addToBackStack(null).commit();
 
             }
         });
@@ -197,7 +197,7 @@ public class HomePage extends AppCompatActivity
 
     protected void onStart(){
         super.onStart();
-        dref4.limitToLast(16).addValueEventListener(new ValueEventListener() {
+        dref4.limitToLast(7).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -382,11 +382,17 @@ public class HomePage extends AppCompatActivity
     public void DispAlarm(){
         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-        r.play();
+        try{
+            r.play();
 
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 500 milliseconds
-        v.vibrate(1000);
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(1000);
+        }
+        catch(Exception e){
+
+        }
+
 
 
 

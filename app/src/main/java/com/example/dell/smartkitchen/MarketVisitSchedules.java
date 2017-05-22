@@ -67,7 +67,7 @@ public class MarketVisitSchedules extends Fragment {
     public void onStart(){
         super.onStart();
 
-        dref.limitToLast(16).addValueEventListener(new ValueEventListener() {
+        dref.limitToLast(7).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
